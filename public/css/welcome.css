@@ -1,0 +1,43 @@
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+.header{
+    background-color: black;
+    padding: 25px;
+
+}
+.header li{
+    display: inline;
+    padding: 20px;
+    color: white;
+    margin: auto;
+}
+.header li:hover{
+    color: aqua;
+}
+.title{
+    font-size: 100px;
+}
+.main{
+    background:linear-gradient(to top right, rgb(128, 128, 128,), rgb(216, 195, 172 ), rgb(166, 124, 102));    
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background-image: url('cover.jpg');
+}
+
+.login{
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+}
+
+.login:hover{
+    color: aqua;
+}
