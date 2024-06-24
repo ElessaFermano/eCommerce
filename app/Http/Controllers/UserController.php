@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required|min:8'
         ]);
 
         $user = User::where('email', $request->email)->first();
@@ -26,7 +26,6 @@ class UserController extends Controller
             ]);
         }
         return response()->json([
-            'status' => 'error',
             'message' => 'Invalid credentials'
         ], 401);
     

@@ -6,12 +6,12 @@
 <title>Dashboard</title>
 <link rel="stylesheet" href="css/dashboard.css">
 <script src="js/sweetalert.min.js"></script>
-<!-- <script>
+<script>
   const token = localStorage.getItem('access_token');
   if(!token){
     window.location.href = '/login';
   }
-</script> -->
+</script>
 </head>
 
 <div class="header">
@@ -42,7 +42,7 @@
   @yield('content')
 </div>
 
-<!-- <script>
+<script>
   function logout() {
     swal({
         title: "Are you sure you want to logout?",
@@ -60,4 +60,4 @@
     });
 }
 
-</script> -->
+</script>
