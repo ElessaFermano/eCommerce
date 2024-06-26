@@ -30,6 +30,15 @@ class UserController extends Controller
         ], 401);
     
     }
+    public function getUsers()
+    {
+        $users = User::all();
+        return response()->json($users);
+    }
+    public function showUsers()
+    {
+        return view('user.index');
+    }
     public function login()
     {
         return view ('login');

@@ -1,3 +1,96 @@
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    display: inline-block;
+    margin-left: 300px; 
+    margin-right: auto; 
+    box-shadow: 0 5px 10px black;
+    padding: 30px;
+    background-color: rgb(227, 227, 227);
+    transition: 0.3s ease;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.editUserButton{
+    background-color: teal;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 8px;
+    text-decoration: none;
+    font-size: small;
+}
+
+.back{
+    background-color: teal;
+    color: white;
+    text-decoration: none;
+    padding: 4px;
+    font-size: small;
+    border-radius: 4px;
+}
+
+.user-container{
+    width: 100vh;
+    display: flex;
+    margin-left: 300px;
+    box-shadow: 0 5px 5px;
+    padding: 20px;
+}
+
+.user{
+    font-weight: 300;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    
+    
+}
+table{
+    background-color: rgb(227, 227, 227);
+    margin: 0;
+    border-radius: 5px;
+    table-layout: auto;
+}
+th{
+    padding:5px 50px;
+    padding-left: 0;
+}
+
+button{
+    background-color: teal;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 8px;
+}
+.addUser{
+    background-color: rgb(239, 238, 238);
+
+    margin-top: 40px;
+    margin-left: 500px;
+    max-width: 600px;
+    padding: 10px;
+    box-shadow: 0 5px 5px;
+    border-radius: 10px;
+}
+form input{
+    display: block;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid lightslategray;
+}
+
+.addUser h2{
+    text-align: center;
+}
+
 body {
     margin: 0;
     position: fixed;
@@ -6,10 +99,10 @@ body {
 }
 
 .header {
+    background-color: teal;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
     margin: 0;
     padding: 4px;
-    background-color: teal;
     width: 100%;
     position: fixed;
     top: 0;
@@ -111,3 +204,27 @@ body {
         margin-left: 0;
     }
 }
+
+
+@media (max-width: 1067px) {
+    .container{
+        margin-left: 250px;
+        padding: 20px;
+
+    }
+}
+
+@media (max-width: 1000px){
+    .container{
+        margin-left: 230px;
+        
+    }
+}
+@media (max-width: 900px){
+    .container{
+        margin-left: 190px;
+        
+    }
+}
+
+
