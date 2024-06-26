@@ -6,12 +6,12 @@
 <title>Dashboard</title>
 <link rel="stylesheet" href="css/dashboard.css">
 <script src="js/sweetalert.min.js"></script>
-<!-- <script>
+<script>
   const token = localStorage.getItem('access_token');
   if(!token){
     window.location.href = '/login';
   }
-</script> -->
+</script>
 </head>
 
 <div class="header">
@@ -24,13 +24,13 @@
       <a href="/dashboard">Dashboard</a>
       </li>
       <li>
-      <a href="/profile">Profile</a>
+      <a href="/user">Users</a>
       </li>
       <li>
-        <a href="/post">Posts</a>
+        <a href="#">Products</a>
       </li>
       <li>
-        <a href="/user">Users</a>
+        <a href="#">Categories</a>
       </li>
       <li>
         <a href="#" onclick="logout()">Logout</a>
@@ -42,7 +42,7 @@
   @yield('content')
 </div>
 
-<!-- <script>
+<script>
   function logout() {
     swal({
         title: "Are you sure you want to logout?",
@@ -53,11 +53,11 @@
     .then((ifLogout) => {
         if (ifLogout) {
             localStorage.removeItem('access_token');
-            window.location.href = '/login';
+            window.location.href = '/';
         } else {
-          window.location.href = '/home';
+          window.location.href = '/dashboard';
         }
     });
 }
 
-</script> -->
+</script>

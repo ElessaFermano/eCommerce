@@ -11,25 +11,25 @@ body{
     padding: 25px;
 
 }
-.header li{
-    display: inline;
+.header li a{
+    text-decoration: none;
     padding: 20px;
     color: white;
-    margin: auto;
 }
-.header li:hover{
+.header li{
+    display: inline;
+}
+.header li a:hover{
     color: aqua;
 }
 .title{
     font-size: 100px;
-}
-.main{
-    background:linear-gradient(to top right, rgb(128, 128, 128,), rgb(216, 195, 172 ), rgb(166, 124, 102));    
-    height: 700px;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    background-image: url('cover.jpg');
+}
+.main{
+    height: 700px;
+    background-color: rgb(111, 202, 202);
 }
 
 .login{
