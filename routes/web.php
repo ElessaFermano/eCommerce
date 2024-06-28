@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ Route::get('/', [UserController::class, 'welcome']);
 Route::get('/login', [UserController::class, 'login']);
 // Route::get('/register', [UserController::class, 'register']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/product', [ProductController::class, 'index']);
 
 Route::get('/register', function () {
     return view('register');
