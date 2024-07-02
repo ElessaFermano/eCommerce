@@ -33,6 +33,9 @@
         <a href="/user">Users</a>
       </li>
       <li>
+        <a href="/productlist">Products</a>
+      </li>
+      <li>
         <a href="#" onclick="logout()">Logout</a>
       </li>
     </ul>
