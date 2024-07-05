@@ -19,6 +19,7 @@
         <form id="LoginForm">
             <input type="email" name="email" placeholder="Enter your email" required>
             <input type="password" name="password" placeholder="Enter your password" required>
+            <p> Don't have an account yet? <a href="/register">SIGN UP</a></p>
             <button type="submit">Login</button>
             <p id="errorMessage" style="display:none; color:red;">Invalid Credentials</p>
         </form>
