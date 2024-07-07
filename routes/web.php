@@ -24,6 +24,7 @@ Route::get('/welcome', [UserController::class, 'welcome']);
 Route::get('/login', [UserController::class, 'login']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/user', [UserController::class, 'showUsers']);
-// Route::get('/register', function () {
-//     return view('register');
-// })->name('register');
+Route::get('/getUsers', [UserController::class, 'getUsers']);
+Route::get('/register', function () {
+    return view('register');
+})->name('register');

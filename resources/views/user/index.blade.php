@@ -1,7 +1,7 @@
 @extends('dashboard')
 @section('content')
-<link rel="stylesheet" href="css/user.css">
-<script src="js/sweetalert.min.js"></script>
+<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
 <br><br>
 <div class="container">
     <div class="h">
@@ -14,73 +14,33 @@
                 <th>Last Name</th>
                 <th>Course</th>
                 <th>Address</th>
-                <th>Image</th>
+                <th>Profile Picture</th>
                 <th>Email</th>
                 <th>Actions</th>
             </tr>
            </thead>
-           <tbody id="tableBody">
-         
+           <tbody>
+               @foreach($users as $user)
+               <tr>
+                   <td>{{ $user->id }}</td>
+                   <td>{{ $user->first_name }}</td>
+                   <td>{{ $user->last_name }}</td>
+                   <td>{{ $user->address }}</td>
+                   <td>{{ $user->phone }}</td>
+                   <td>
+                       <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('image/profdef.jpg') }}" alt="Profile" width="50px" height="50px">
+                   </td>
+                    
+                   <td>{{ $user->email }}</td>
+                   <td>
+                       <button>Edit</button>
+                       <button>Delete</button>
+                   </td>
+               </tr>
+               @endforeach
            </tbody>
         </table>
-       <button id="addUserButton" type="button">Add User</button>
+     
     </div>
 </div>
-
-<script>
-
-fetch('/api/user', {
-    method: 'GET'
-}).then(response => response.json())
-  .then(data => {
-    let tableBody = document.getElementById('tableBody');
-    tableBody.innerHTML = '';
-
-    data.forEach(user => {
-        let tableRow = `
-            <tr>
-                <td>${user.id}</td>
-                <td>${user.firstname}</td>
-                <td>${user.lastname}</td>
-                <td>${user.role}</td>
-                <td>${user.address}</td>     
-                <td>${user.phone}</td>
-                <td>${user.email}</td>
-                <td>
-                    <a class="editUserButton" href="updateUser/${user.id}">Edit</a>
-                    <button class="deleteUserButton" data-id="${user.id}">Delete</button>
-                </td>
-            </tr>`;
-        tableBody.innerHTML += tableRow;
-    });
-
-    document.getElementById('addUserButton').addEventListener('click', function() {
-        window.location.href = '/user/create';
-});
-
-    document.querySelectorAll('.deleteUserButton').forEach(button => {
-        button.addEventListener('click', function() {
-            const userId = this.getAttribute('data-id');
-            
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this user!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
-                    fetch(`/api/user/${userId}`, {
-                        method: 'DELETE'
-                    }).then(response => response.json())
-                      .then(data => {
-                            window.location.reload();             
-                    });
-                }
-                });
-             });
-        });
-    });
-
-</script>
 @endsection

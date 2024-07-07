@@ -1,43 +1,131 @@
-
-body{
+body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     position: fixed;
     width: 100vw;
     height: 100vh;
 }
-.header{
+
+.header {
     background-color: black;
     padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-}
-.header li a{
-    text-decoration: none;
-    padding: 20px;
-    color: white;
-}
-.header li{
-    display: inline;
-}
-.header li a:hover{
-    color: aqua;
-}
-.title{
-    font-size: 100px;
+.header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     justify-content: center;
 }
-.main{
-    height: 700px;
-    background-color: rgb(111, 202, 202);
+
+.header li {
+    display: inline;
 }
 
-.login{
+.header li a {
+    text-decoration: none;
+    padding: 30px;
+    color: white;
+}
+
+.header li a:hover {
+    color: aqua;
+}
+
+.title {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.main {
+    height: 700px;
+    background-image: url('/image/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login {
     color: white;
     text-decoration: none;
     padding: 20px;
 }
 
-.login:hover{
+.login:hover {
     color: aqua;
+}
+
+img {
+    margin-left: 200px;
+    color: white;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 1200px) {
+    .title {
+        font-size: 70px;
+    }
+    
+    .header li a {
+        padding: 20px;
+    }
+
+    img {
+        margin-left: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .header ul {
+        flex-direction: column;
+    }
+
+    .header li {
+        margin-bottom: 10px;
+    }
+
+    .title {
+        font-size: 50px;
+    }
+
+    img {
+        margin-left: 0;
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 15px;
+    }
+    
+    .header li a {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
 }
