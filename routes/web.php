@@ -21,12 +21,10 @@ Route::get('/', function () {
 });
 
 Route::get('/', [UserController::class, 'welcome']);
+Route::get('/welcome', [UserController::class, 'welcome']);
 Route::get('/login', [UserController::class, 'login']);
-// Route::get('/register', [UserController::class, 'register']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-// Route::get('/products', [ProductController::class, 'products']);
-Route::get('/productlist', [ProductController::class, 'productlist']);
-
-Route::get('/register', function () {
+// Route::get('/showcartegoy', []);
+Route::get('/register', function (){
     return view('register');
 })->name('register');
