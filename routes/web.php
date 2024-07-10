@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,8 +24,10 @@ Route::get('/', [UserController::class, 'welcome']);
 Route::get('/welcome', [UserController::class, 'welcome']);
 Route::get('/login', [UserController::class, 'login']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+
 Route::get('/user', [UserController::class, 'showUsers']);
 Route::get('/getUsers', [UserController::class, 'getUsers']);
+
 Route::get('/register', function () {
     return view('register');
 })->name('register');
