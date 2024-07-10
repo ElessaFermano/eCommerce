@@ -9,7 +9,7 @@ body {
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
     margin: 0;
     padding: 4px;
-    background: linear-gradient(to left, teal, rgb(114, 189, 175), rgb(33, 132, 81));
+    background-color: teal;
     width: 100%;
     position: fixed;
     top: 0;
@@ -25,7 +25,7 @@ body {
 .sidebar {
     background: linear-gradient(to top left, rgb(73, 72, 72), rgb(157, 155, 155), whitesmoke);
     color: white;
-    width: 250px;
+    width: 170px;
     height: 100%;
     position: fixed;
     top: 75px; 
@@ -54,7 +54,7 @@ body {
 }
 
 .sidebar li a:hover {
-    background-color: rgb(20, 155, 49);
+    background-color: teal;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
     color: white;

@@ -6,20 +6,25 @@
     <title>eCommerce Platform Project</title>
     <link rel="stylesheet" href="{{asset('css/welcome.css')}}">
 </head>
-<body>
+<body >
+    
     <div class="header">
-        <li><a href="#"></a>Home</li>
-        <li><a href="#"></a>Categories</li>
-        <li><a href="#"></a>All Products</li>
-        <li><a href="#"></a>Contact</li>
-        <li><a href="#"></a>About</li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
 
-        <a href="/login" class="login">Login</a>
-
-    </div>
+        <li><a href="/login" class="login">Login</a></li>
+     
+        <img src="{{ asset('image/profdef.jpg') }}" alt="Profile" >
+        </div>
 
     <div class="main">
+
         <div class="title">eShop</div>
+
+        
     </div>
 
 </body>
