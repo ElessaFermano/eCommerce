@@ -30,7 +30,7 @@
         <a href="#">Products</a>
       </li>
       <li>
-        <a href="/showcartegoy">Categories</a>
+        <a href="/user">Users</a>
       </li>
       <li>
         <a href="/productlist">Products</a>
