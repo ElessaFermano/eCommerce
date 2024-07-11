@@ -27,7 +27,7 @@
       <a href="/user">Users</a>
       </li>
       <li>
-        <a href="#">Products</a>
+        <a href="/products">Products</a>
       </li>
       <li>
         <a href="#">Categories</a>
