@@ -26,6 +26,7 @@ Route::get('/welcome', [UserController::class, 'welcome']);
 Route::get('/login', [UserController::class, 'login']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
+Route::get('/showcategory', [CategoryController::class, 'showcategory']);
 
 Route::get('/register', function () {
     return view('register');
