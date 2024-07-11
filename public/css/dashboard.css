@@ -23,7 +23,7 @@ body {
 }
 
 .sidebar {
-    background: linear-gradient(to top left, rgb(73, 72, 72), rgb(157, 155, 155), whitesmoke);
+    background-color: rgb(225, 225, 225);
     color: white;
     width: 170px;
     height: 100%;
