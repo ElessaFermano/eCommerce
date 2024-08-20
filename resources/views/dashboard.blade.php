@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
@@ -8,6 +9,11 @@
 <script src="js/sweetalert.min.js"></script>
 <script>
   const token = localStorage.getItem('access_token');
+  const role =localStorage.getItem('role')
+  // console.log(role);
+  if(role == 'customer'){
+    window.location.href = '/';
+  }
   if(!token){
     window.location.href = '/login';
   }
@@ -24,16 +30,13 @@
       <a href="/dashboard">Dashboard</a>
       </li>
       <li>
-      <a href="/user">Users</a>
+      <a href="/users">Users</a>
       </li>
       <li>
         <a href="/products">Products</a>
       </li>
       <li>
-        <a href="showcategory">Categories</a>
-      </li>
-      <li>
-        <a href="/productlist">Products</a>
+        <a href="/categories">Categories</a>
       </li>
       <li>
         <a href="#" onclick="logout()">Logout</a>
@@ -62,5 +65,22 @@
         }
     });
 }
+
+// fetch('/api/user' , {
+//   method: 'GET',
+//   headers : {
+//     Authorization: 'Bearer ' +localStorage.getItem('access_token'),
+//     accept: 'application/json',
+//   }
+// }).then(response => response.json())
+// .then(response => {
+//   // if(response.role == 'customer'){
+//   //   // alert('404 Not Found!');
+//   //   // window.location.reload();
+//   //   window.location.href = '/';
+//   // }else{
+//   //   window.location.href = '/dashboard';
+//   // }
+// })
 
 </script>

@@ -1,65 +1,51 @@
-
 body{
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-.container {
-    display: inline-block;
-    margin-left: 300px; 
-    margin-right: auto; 
-    box-shadow: 0 5px 10px black;
-    padding: 30px;
-    background-color: rgb(227, 227, 227);
-    transition: 0.3s ease;
-    border-radius: 10px;
-    margin-top: 50px;
+.container { 
+    border-radius: 20px;
+    width: 400px;
+    max-width: 450px;
+    margin: auto; 
+    padding: 35px 20px;
+    box-shadow: 0 5px 10px;
+    background-color: rgb(232, 232, 232);
+    margin-top: 90px;
+
 }
 
-.editUserButton{
-    background-color: teal;
-    color: white;
+form input{
+    display: block;
+    align-items: center;
+    width: auto;
+    padding: 5px;
     border-radius: 5px;
-    border: none;
-    padding: 5px 8px;
-    text-decoration: none;
-    font-size: small;
+    border: 1px solid lightslategray;
 }
 
-.addCategory{
-    background-color: teal;
-    color: white;
+textarea{
+    display: block;
+    align-items: center;
+    width: auto;
+    padding: 5px;
     border-radius: 5px;
-    border: none;
-    padding: 5px 8px;
-    text-decoration: none;
-    font-size: small;
+    border: 1px solid lightslategray;
 }
 
-table{
-    background-color: rgb(227, 227, 227);
-    margin: 0;
-    border-radius: 5px;
-    table-layout: auto;
-}
-th{
-    padding:5px 50px;
-    padding-left: 0;
-}
-
-.addProduct{
-    background-color: teal;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    padding: 5px 8px;
-    text-decoration: none;
-    font-size: small;
-}
-
-h1{
+h2{
     text-align: center;
 }
 
+button{
+    background-color: teal;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 8px;
+    text-decoration: none;
+    font-size: small;
+    margin-top: 5px;
+}
 .header {
     background-color: teal;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);

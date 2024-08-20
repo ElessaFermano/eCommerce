@@ -1,33 +1,63 @@
 @extends('dashboard')
 @section('content')
-<link rel="stylesheet" href="{{asset('css/user.css')}}">
+<link rel="stylesheet" href="{{asset('css/product.css')}}">
+<script src="js/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('js/userindex.js')}}">
+    const tokenn = localStorage.getItem('access_token');
+    if (!tokenn) {
+        window.location.href = "/";
+    }
+    fetch("http://127.0.0.1:8000/api/user", {
+        method: "GET",
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+        }
+    }).then(response => response.json())
+    .then(response => {
+        console.log(response);
+        if (response.role != 'admin') {
+            window.location.href = "/";
+        }
+    });
+</script>
 <div class="container">
     <h1>Products List</h1>
-    <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Add New Product</a>
+    <a href="{{ route('products.create') }}" class="addProduct">Add New Product</a>
+    <br><br>
     <table class="table">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Image</th>
-                <th>Stock</th>
+                <th>Category</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach($products as $product)
                 <tr>
+                    <td>{{ $product->id }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
                     <td>
-                        @if($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="50">
-                        @endif
-                    </td>
-                    <td>{{ $product->stock }}</td>
-                   
+                       <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('image/profdef.jpg') }}" alt="Product Image" width="50px" height="50px" style="border-radius: 50%;">
+                   </td>
+                    <td>{{ $product->category->name }}</td>
+                  <td>
+                       <a href="{{ route('products.edit', $product->id) }}" class="editButton">Edit</a>
+
+                       <!-- Delete Button and Form -->
+                       <form id="delete-form-{{ $product->id }}" action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
+                           @csrf
+                           @method('DELETE')
+                           <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $product->id }})">Delete</button>
+                       </form>
+                   </td>
                 </tr>
             @endforeach
         </tbody>
