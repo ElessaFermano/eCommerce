@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,19 +21,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', WelcomeController::class);
+Route::resource('users', UserController::class);
+Route::resource('products', ProductController::class);
+Route::resource('categories', CategoryController::class);
 
-Route::get('/', [UserController::class, 'welcome']);
-Route::get('/welcome', [UserController::class, 'welcome']);
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [LoginController::class, 'login']);
+Route::get('/register', [RegisterController::class, 'register']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/user', [UserController::class, 'showUsers']);
-Route::get('/getUsers', [UserController::class, 'getUsers']);
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
+Route::get('/customer/{id}', [WelcomeController::class, 'customer']);
+
+Route::get('/byCategory/{id}', [CategoryController::class, 'byCategory']);
+Route::get('/category', [CategoryController::class, 'byCategory']);
+
+Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'viewCart']);
+Route::post('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cart/count', [CartController::class, 'cartCount']);
