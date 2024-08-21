@@ -13,7 +13,6 @@
 <script>
   const token = localStorage.getItem('access_token');
   const role =localStorage.getItem('role')
-
   if(role == 'customer'){
     window.location.href = '/';
   }
@@ -41,6 +40,15 @@
       </li>
       <li>
         <a href="/categories">Categories</a>
+      </li>
+      <li>
+        <a href="#">Suppliers</a>
+      </li>
+      <li>
+        <a href="#">Orders</a>
+      </li>
+      <li>
+        <a href="#">Reviews</a>
       </li>
       <li>
         <a href="#" onclick="logout()">Logout</a>
@@ -71,22 +79,6 @@
 }
 
 
-// fetch('/api/user' , {
-//   method: 'GET',
-//   headers : {
-//     Authorization: 'Bearer ' +localStorage.getItem('access_token'),
-//     accept: 'application/json',
-//   }
-// }).then(response => response.json())
-// .then(response => {
-//   // if(response.role == 'customer'){
-//   //   // alert('404 Not Found!');
-//   //   // window.location.reload();
-//   //   window.location.href = '/';
-//   // }else{
-//   //   window.location.href = '/dashboard';
-//   // }
-// })
 function confirmDelete(userId) {
         Swal.fire({
             title: 'Are you sure you want to delete?',
@@ -104,9 +96,7 @@ function confirmDelete(userId) {
     }
 </script>
 
-<!-- <script src={{asset('js/userindex.js')}}></script> -->
 <script src={{asset("js/sweetalert.min.js")}}></script> 
-<!-- <script src={{asset("https://cdn.jsdelivr.net/npm/sweetalert2@11")}}></script> -->
 
 </body>
 </html>
