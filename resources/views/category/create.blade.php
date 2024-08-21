@@ -1,6 +1,5 @@
 @extends('dashboard')
 @section('content')
-<link rel="stylesheet" href="{{asset("css/productcreate.css")}}">
 <div class="container">
     <h2>ADD NEW CATEGORY</h2>
     @if ($errors->any())

@@ -1,6 +1,5 @@
 @extends('dashboard')
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/usercreate.css') }}"></div>
 
 <div class="container">
     <h3>ADD NEW USER</h3>

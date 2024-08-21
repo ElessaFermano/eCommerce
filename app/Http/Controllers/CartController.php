@@ -39,12 +39,22 @@ dd($cartCount);
         return response()->json(['count' => $cartCount]);
     }
 
-    public function viewCart(Request $request)
+    public function viewCart(Request $request, $id)
     {
-        $userId = $request->input('user_id');
-        $cartItems = Cart::where('user_id', $userId)->with('product')->get();
+        // $userId = $request->input('user_id');
+        // dd($id);
+        $cartItems = Cart::where('user_id', $id)->with('product')->get();
+        $total = 0;
+        // dd($cartItems);
+        // dd($cartItems->product->name);
+        foreach($cartItems as $cartItem){
+           $partial  =   $cartItem->product->price * $cartItem->quantity;
 
-        return view('cart', compact('cartItems'));
+           $total += $partial;
+        }
+
+        
+        return view('cart', compact('cartItems', 'total'));
     }
 
     public function removeFromCart(Request $request, $id)

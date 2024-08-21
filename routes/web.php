@@ -35,6 +35,6 @@ Route::get('/byCategory/{id}', [CategoryController::class, 'byCategory']);
 Route::get('/category', [CategoryController::class, 'byCategory']);
 
 Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
-Route::get('/cart', [CartController::class, 'viewCart']);
+Route::get('/cart/{id}', [CartController::class, 'viewCart']);
 Route::post('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::get('/cart/count', [CartController::class, 'cartCount']);
