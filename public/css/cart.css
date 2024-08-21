@@ -9,7 +9,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #dcdcdc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -69,21 +69,15 @@ body {
 
 .total-label {
     font-weight: bold;
-    color: #333333;
+    color: #fc0000;
     font-size: 18px;
 }
 
-.total-value {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff6b6b;
-}
 
-/* Styles for the PLACE ORDER button */
-.place-order-button {
+.checkoutButton{
     display: inline-block;
     padding: 12px 25px;
-    background-color: #28a745;
+    background-color: #036451;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
@@ -91,23 +85,56 @@ body {
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
+.browse{
+    text-decoration: none;
+    color: blue;
+}
 
-.place-order-button:hover {
-    background-color: #218838;
+.checkoutButton:hover {
+    background-color: #0ab43d;
     transform: translateY(-2px);
 }
 
-.place-order-button:active {
-    background-color: #1e7e34;
-    transform: translateY(0);
-}
-
-.place-order-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(72, 180, 97, 0.4);
-}
-
-.place-order-container {
+.checkout-container {
     text-align: center;
     margin-top: 20px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+thead th {
+    background-color: #036451;
+    color: white;
+    padding: 12px;
+    text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+@media (max-width: 768px) {
+    table {
+        font-size: 16px;
+    }
+}
+

@@ -15,8 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->decimal('total_price', 8,2);
+            $table->string('country');
+            $table->string('province');
+            $table->string('city');
+            $table->string('barangay');
+            $table->integer('zipcode');
             $table->string('payment_method');
-            $table->string('shipping_address');
             $table->timestamps();
         });
     }
