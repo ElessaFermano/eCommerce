@@ -21,10 +21,9 @@
             <li><a href="/login">Login</a></li>
         </ul>
         <div class="icon">
-            <a href="/cart" class="cart">
-                <img src={{asset("image/cart.png")}} alt="">
-                <span id="cart"></span>
-            </a>
+            <div id="cartItem"> 
+            </div>
+           
             <a class="user" href="#">
                 <img src={{asset("image/profile.png")}} alt="">
                 <span id="userName"></span>
@@ -102,11 +101,17 @@
         
         .then(response => {
             localStorage.setItem('current_id', response.id);
+            document.getElementById('cartItem').innerHTML = ` <a href="/cart/${response.id}" class="cart">
+              
+              <img src={{asset("image/cart.png")}} alt="">
+              <span id="cart"></span>
+          </a>`;
             document.getElementById('userName').textContent = response.first_name;
             document.getElementById('cart').textContent = `{{ $cart }}`;
             document.querySelectorAll('#UserID').forEach(input => {
                 input.value = response.id;
             });
+           
         })
     } else {
         document.getElementById('cart').textContent = `0`;

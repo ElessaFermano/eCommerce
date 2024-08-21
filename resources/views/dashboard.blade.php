@@ -5,12 +5,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
-<link rel="stylesheet" href="css/dashboard.css">
-<script src="js/sweetalert.min.js"></script>
+
+<link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
+<link rel="stylesheet" href="{{asset('css/product.css')}}">
+<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+
 <script>
   const token = localStorage.getItem('access_token');
   const role =localStorage.getItem('role')
-  // console.log(role);
+
   if(role == 'customer'){
     window.location.href = '/';
   }
@@ -19,6 +22,7 @@
   }
 </script>
 </head>
+<body>
 
 <div class="header">
     <h2>WELCOME</h2>
@@ -66,6 +70,7 @@
     });
 }
 
+
 // fetch('/api/user' , {
 //   method: 'GET',
 //   headers : {
@@ -82,5 +87,26 @@
 //   //   window.location.href = '/dashboard';
 //   // }
 // })
-
+function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Are you sure you want to delete?',
+            text: "You won't be able to recover this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + userId).submit();
+            }
+        })
+    }
 </script>
+
+<!-- <script src={{asset('js/userindex.js')}}></script> -->
+<script src={{asset("js/sweetalert.min.js")}}></script> 
+<!-- <script src={{asset("https://cdn.jsdelivr.net/npm/sweetalert2@11")}}></script> -->
+
+</body>
+</html>

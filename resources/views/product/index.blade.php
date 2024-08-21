@@ -1,14 +1,11 @@
 @extends('dashboard')
 @section('content')
-<link rel="stylesheet" href="{{asset('css/product.css')}}">
-<script src="js/sweetalert.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ asset('js/userindex.js')}}">
+<script>
     const tokenn = localStorage.getItem('access_token');
     if (!tokenn) {
         window.location.href = "/";
     }
-    fetch("http://127.0.0.1:8000/api/user", {
+    fetch("/api/user", {
         method: "GET",
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('access_token'),

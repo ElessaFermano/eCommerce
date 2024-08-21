@@ -6,8 +6,6 @@
         window.location.href = "/";
     }
 </script>
-<link rel="stylesheet" href="{{ asset('css/useredit.css') }}">
-<script src="{{ asset('js/sweetalert.min.js') }}"></script>
 <br><br>
 <div class="container">
     <div class="h">

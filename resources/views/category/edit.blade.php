@@ -6,7 +6,6 @@
         window.location.href = "/";
     }
 </script>
-<link rel="stylesheet" href="{{ asset('css/useredit.css') }}">
 <br><br>
 <div class="container">
     <div class="h">

@@ -131,21 +131,19 @@
             <div class="item-quantity-price">
                 <span class="item-quantity">{{ $item->quantity }} x</span>
                 <span class="item-price">Php {{ $item->product->price }}</span>
-                <!-- <form action="{{ route('cart.remove', $item->id) }}" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" class="delete-button">Delete</button>
-                </form> -->
+                
             </div>
         </div>
     @endforeach
 
     <div class="total-container">
         <span class="total-label">Total:</span>
+     
+        Php {{ $total }}
         <span class="total-value">
-            Php {{ array_sum(array_map(function($item) {
-                return $item->quantity * $item->product->price;
-            }, $cartItems->toArray())) }}
+          
         </span>
+          
     </div>
 
     <div class="place-order-container">
@@ -155,33 +153,4 @@
 </body>
 </html>
 
-    <!-- <div class="cart-container">
-        @foreach($cartItems as $item)
-            <div class="cart-item">
-                <div class="item-name">{{ $item['name'] }}</div>
-                <div class="item-quantity-price">
-                    <span class="item-quantity">{{ $item['quantity'] }} x</span>
-                    <span class="item-price">Php {{ $item['price'] }}</span>
-                    <form action="{{ route('cart.remove', $id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        <button type="submit" class="delete-button">Delete</button>
-                    </form>
-                </div>
-            </div>
-        @endforeach
-
-        <div class="total-container">
-            <span class="total-label">Total:</span>
-            <span class="total-value">
-                Php {{ array_sum(array_map(function($item) {
-                    return $item->quantity * $item->price;
-                }, $cartItems->toArray())) }}
-            </span>
-        </div> -->
-<!-- 
-        <div class="place-order-container">
-            <a href="#" class="place-order-button">PLACE ORDER</a>
-        </div>
-    </div>
-</body>
-</html> -->
+  
