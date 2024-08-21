@@ -57,6 +57,10 @@ body {
     background-repeat: no-repeat;
 }
 
+.logout{
+    text-decoration: none;
+    color: black;
+}
 .product {
     height: 100vh; 
     background-color: rgb(202, 202, 202);

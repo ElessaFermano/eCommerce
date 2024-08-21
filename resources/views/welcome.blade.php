@@ -2,18 +2,16 @@
 <html lang="en">
 
 <head>
-    <title>eShop</title>
+    <title>theeSHOP</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset('css/welcome.css')}}">
     <link rel="icon" href="data:,">
 
 </head>
-
 <body>
-
     <div class="header">
-        <h2>eSHOP</h2>
+        <h2>theeSHOP</h2>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
@@ -29,7 +27,7 @@
                 <span id="userName"></span>
             </a>
 
-            <a href="/logout">Logout</a>
+            <a href="#" onclick="logout()" class="logout">Logout</a>
         </div>
     </div>
 
@@ -73,7 +71,6 @@
     <div class="space"></div>
     <footer class="footer">
         <div>
-            <!-- Footer content -->
         </div>
     </footer>
  <script>
@@ -118,8 +115,27 @@
         document.getElementById('userName').textContent = 'Guest';
     }
 });
+
+function logout() {
+    swal({
+        title: "Are you sure you want to logout?",
+        icon: "warning",
+        buttons: ["Cancel", "Logout"],
+        dangerMode: true,
+    })
+    .then((ifLogout) => {
+        if (ifLogout) {
+            localStorage.removeItem('access_token');
+            window.location.href = '/';
+        } else {
+          window.location.href = '/dashboard';
+        }
+    });
+}
     </script>
 
-</body>
 
+<script src={{asset("js/sweetalert.min.js")}}></script> 
+
+</body>
 </html>

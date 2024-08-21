@@ -11,6 +11,13 @@ class CartController extends Controller
     public function addToCart(Request $request, $id)
     {
         $userId = $request->input('user_id');
+        if (empty($userId)) {
+            echo "<script>
+                alert('Please log in first.');
+                window.location.href = '/login'; 
+            </script>";
+            exit(); 
+        }
         $product = Product::findOrFail($id);
 
         $cartItem = Cart::where('user_id', $userId)
@@ -41,15 +48,12 @@ dd($cartCount);
 
     public function viewCart(Request $request, $id)
     {
-        // $userId = $request->input('user_id');
-        // dd($id);
+
         $cartItems = Cart::where('user_id', $id)->with('product')->get();
         $total = 0;
-        // dd($cartItems);
-        // dd($cartItems->product->name);
+
         foreach($cartItems as $cartItem){
            $partial  =   $cartItem->product->price * $cartItem->quantity;
-
            $total += $partial;
         }
 
