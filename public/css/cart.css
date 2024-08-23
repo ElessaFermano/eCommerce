@@ -85,10 +85,6 @@ body {
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
-.browse{
-    text-decoration: none;
-    color: blue;
-}
 
 .checkoutButton:hover {
     background-color: #0ab43d;
@@ -138,3 +134,15 @@ tbody tr:hover {
     }
 }
 
+.form-group label{
+    font-size: small;
+}
+
+.form-group input{
+    max-width: 550px;
+    width: 500px;
+}
+
+h4{
+    text-align: center;
+}

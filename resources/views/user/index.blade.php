@@ -1,23 +1,6 @@
 @extends('dashboard')
 @section('content')
-<script>
-    const tokenn = localStorage.getItem('access_token');
-    if (!tokenn) {
-        window.location.href = "/";
-    }
-    fetch("/api/user", {
-        method: "GET",
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-        }
-    }).then(response => response.json())
-    .then(response => {
-        console.log(response);
-        if (response.role != 'admin') {
-            window.location.href = "/";
-        }
-    });
-</script>
+
 <br><br>
 <div class="container">
     <div class="h">
@@ -39,9 +22,12 @@
             </tr>
            </thead>
            <tbody>
+           @php
+                $counter = ($users->currentPage() - 1) * $users->perPage();
+            @endphp
                @foreach($users as $user)
                <tr>
-                   <td>{{ $user->id }}</td>
+               <td>{{ $loop->iteration + $counter}}</td>
                    <td>{{ $user->first_name }}</td>
                    <td>{{ $user->last_name }}</td>
                    <td>{{ $user->role }}</td>
@@ -64,6 +50,25 @@
                @endforeach
            </tbody>
         </table>
+        <div>{{$users->links()}}</div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    
+     function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Are you sure you want to delete?',
+            text: "You won't be able to recover this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + userId).submit();
+            }
+        })
+    }
+</script>
 @endsection

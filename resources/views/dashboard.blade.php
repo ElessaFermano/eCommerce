@@ -12,10 +12,11 @@
 
 <script>
   const token = localStorage.getItem('access_token');
-  const role =localStorage.getItem('role')
-  if(role == 'customer'){
-    window.location.href = '/';
-  }
+  // const role =localStorage.getItem('role');
+  // let home =localStorage.getItem('current_id');
+  // if(role != 'admin'){
+  //   window.location.href = '/customer/' + home;
+  // }
   if(!token){
     window.location.href = '/login';
   }
@@ -24,7 +25,8 @@
 <body>
 
 <div class="header">
-    <h2>WELCOME</h2>
+    <H2>ADMIN</H2>
+    <!-- <a href="#" onclick="logout()" class="logout">Logout</a> -->
 </div>
 
 <div class="sidebar">
@@ -42,10 +44,13 @@
         <a href="/categories">Categories</a>
       </li>
       <li>
-        <a href="#">Suppliers</a>
+        <a href="#">Orders</a>
       </li>
       <li>
-        <a href="#">Orders</a>
+        <a href="/shipping">Shipping Fees</a>
+      </li>
+      <li>
+        <a href="#">Suppliers</a>
       </li>
       <li>
         <a href="#">Reviews</a>
@@ -78,25 +83,35 @@
     });
 }
 
-
 function confirmDelete(userId) {
-        Swal.fire({
-            title: 'Are you sure you want to delete?',
-            text: "You won't be able to recover this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('delete-form-' + userId).submit();
-            }
-        })
+        const confirmed = confirm('Are you sure you want to delete? You won\'t be able to recover this!');
+
+        if (confirmed) {
+            document.getElementById('delete-form-' + userId).submit();
+        }
     }
+
+
+// function confirmDelete(userId) {
+//         Swal.fire({
+//             title: 'Are you sure you want to delete?',
+//             text: "You won't be able to recover this!",
+//             icon: 'warning',
+//             showCancelButton: true,
+//             confirmButtonColor: '#3085d6',
+//             cancelButtonColor: '#d33',
+//             confirmButtonText: 'Yes, delete it!'
+//         }).then((result) => {
+//             if (result.isConfirmed) {
+//                 document.getElementById('delete-form-' + userId).submit();
+//             }
+//         })
+//     }
 </script>
 
 <script src={{asset("js/sweetalert.min.js")}}></script> 
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+
 
 </body>
 </html>

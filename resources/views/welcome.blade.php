@@ -127,7 +127,7 @@ function logout() {
         if (ifLogout) {
             localStorage.removeItem('access_token');
             localStorage.removeItem('user_id');
-            localStorage.removeItem('currentId');
+            localStorage.removeItem('current_id');
             localStorage.removeItem('role');
             window.location.href = '/';
         } else {

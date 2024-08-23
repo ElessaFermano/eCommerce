@@ -10,12 +10,10 @@
 </head>
 <script>
 let home =localStorage.getItem('current_id');
-
 if(home){
     document.addEventListener('click', function(){
         document.getElementById('home').href = '/customer/' + home;
-    })
-   
+    })  
 }
 </script>
 <body>
@@ -36,7 +34,7 @@ if(home){
                 <span id="userName"></span>
             </a>
 
-            <a href="#" onclick="logout()" class="logout">Logout</a>
+            <a href="#" class="logout"></a>
         </div>
     </div>
 <div class="cart-container">
@@ -63,21 +61,20 @@ if(home){
     <div class="total-container">
      @if ($total)
     
-     <div class="total-label"> Total: 
-       <h3> Php {{ $total }}  </h3>
-       </div>
+     <div class=""> Total: </div> 
+       <h3 class="total-label"> Php {{ $total }}  </h3>
+       
      @else
      <center>
         <h2> <b>Your cart is empty.</b> </h2>
-        <a href="/" class="browse">Browse Products</a>
      </center>
         
      @endif
             
     </div>
-    <br><br><br>
     <form action="#" method="POST">
     @csrf
+    <h4>SPECIFIC ADDITIONAL ADDRESS</h4>
     <div class="form-group">
         <label for="country">Country:</label>
         <input type="text" id="country" name="country" required>

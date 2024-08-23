@@ -15,7 +15,7 @@ class RegisterController extends Controller
         'first_name' => 'required',
         'last_name' => 'required',
         'role' => 'nullable',
-        'address' => 'required',
+        'address' => 'nullable',
         'phone' => 'required|digits:11',
         'profile_pic' => 'nullable|mimes:jpg,png|max:2048', 
         'email' => 'required|email',
