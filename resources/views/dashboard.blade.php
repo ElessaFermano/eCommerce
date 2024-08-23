@@ -26,7 +26,6 @@
 
 <div class="header">
     <H2>ADMIN</H2>
-    <!-- <a href="#" onclick="logout()" class="logout">Logout</a> -->
 </div>
 
 <div class="sidebar">
@@ -84,29 +83,20 @@
 }
 
 function confirmDelete(userId) {
-        const confirmed = confirm('Are you sure you want to delete? You won\'t be able to recover this!');
-
-        if (confirmed) {
-            document.getElementById('delete-form-' + userId).submit();
-        }
+        Swal.fire({
+            title: 'Are you sure you want to delete?',
+            text: "You won't be able to recover this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + userId).submit();
+            }
+        })
     }
-
-
-// function confirmDelete(userId) {
-//         Swal.fire({
-//             title: 'Are you sure you want to delete?',
-//             text: "You won't be able to recover this!",
-//             icon: 'warning',
-//             showCancelButton: true,
-//             confirmButtonColor: '#3085d6',
-//             cancelButtonColor: '#d33',
-//             confirmButtonText: 'Yes, delete it!'
-//         }).then((result) => {
-//             if (result.isConfirmed) {
-//                 document.getElementById('delete-form-' + userId).submit();
-//             }
-//         })
-//     }
 </script>
 
 <script src={{asset("js/sweetalert.min.js")}}></script> 

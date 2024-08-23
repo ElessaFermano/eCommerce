@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->decimal('total_price', 8,2);
-            $table->string('country');
-            $table->string('province');
-            $table->string('city');
-            $table->string('barangay');
-            $table->integer('zipcode');
+            $table->foreignId('shipping_address_id')->constrained();
             $table->string('payment_method');
+            $table->decimal('subtotal', 8,2);
+            $table->decimal('shipping',8,2);
+            $table->decimal('total',8,2);
             $table->timestamps();
         });
     }

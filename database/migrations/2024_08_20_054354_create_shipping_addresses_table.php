@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category', function (Blueprint $table) {
+        Schema::create('shipping_addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
+            $table->foreignId('user_id')->constrained();
+            $table->string('country')->default('Philippines');
+            $table->foreignId('shipping_id')->constrained();
+            $table->string('city');
+            $table->string('brgy');
+            $table->integer('zipcode');
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('shipping_addresses');
     }
 };
