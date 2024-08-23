@@ -32,8 +32,8 @@
     </div>
 
     <div class="main">
-        <div>
-
+        <div class="">
+        <img src="{{asset('image/coverphoto.jpg')}}" alt="" class="coverphoto">
         </div>
     </div>
 <div class="space"></div>
@@ -126,6 +126,9 @@ function logout() {
     .then((ifLogout) => {
         if (ifLogout) {
             localStorage.removeItem('access_token');
+            localStorage.removeItem('user_id');
+            localStorage.removeItem('current_id');
+            localStorage.removeItem('role');
             window.location.href = '/';
         } else {
           window.location.href = '/dashboard';

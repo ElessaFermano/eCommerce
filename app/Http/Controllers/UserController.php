@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::simplePaginate(5); 
         return view('user.index', compact('users'));
     }
     public function create()
@@ -21,7 +19,6 @@ class UserController extends Controller
 
     public function store(Request $request)
 {
-    // Validate the request
     $request->validate([
         'first_name' => 'required',
         'last_name' => 'required',
@@ -33,14 +30,12 @@ class UserController extends Controller
         'profile_pic' => 'nullable|image',
     ]);
 
-    // Handle the file upload if there is a profile picture
     if ($request->hasFile('profile_pic')) {
         $path = $request->file('profile_pic')->store('profile_pics', 'public');
     } else {
         $path = null;
     }
 
-    // Create a new user
     User::create([
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
@@ -68,7 +63,7 @@ public function update(Request $request, $id)
         'first_name' => 'required|string|max:255',
         'last_name' => 'required|string|max:255',
         'role' => 'nullable',
-        'address' => 'required|string|max:255',    
+        'address' => 'nullable|string|max:255',    
         'phone' => 'required|digits:11',   
         'email' => 'required|email',
         'profile_pic' => 'nullable',
@@ -96,6 +91,4 @@ public function destroy(User $user)
          $user->delete();
          return redirect()->route('users.index');
     }
-
-
 }
