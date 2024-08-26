@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
-    public function index( )
+    public function index()
     {
         $items = Product::all();
         $byCategory = Product::with('category')->get();

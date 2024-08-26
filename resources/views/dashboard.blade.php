@@ -7,25 +7,44 @@
 <title>Dashboard</title>
 
 <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
-<link rel="stylesheet" href="{{asset('css/product.css')}}">
-<link rel="stylesheet" href="{{ asset('css/user.css') }}">
 
 <script>
-  const token = localStorage.getItem('access_token');
-  // const role =localStorage.getItem('role');
-  // let home =localStorage.getItem('current_id');
-  // if(role != 'admin'){
-  //   window.location.href = '/customer/' + home;
-  // }
-  if(!token){
-    window.location.href = '/login';
-  }
+  const tokenn = localStorage.getItem('access_token');
+    if (!tokenn) {
+        window.location.href = "/";
+    }
+    fetch("/api/user", {
+        method: "GET",
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+        }
+    }).then(response => response.json())
+    .then(response => {
+        console.log(response);
+        if (response.role != 'admin') {
+            window.location.href = "/";
+        }
+    });
 </script>
+<style>
+
+
+</style>
 </head>
 <body>
 
 <div class="header">
-    <H2>ADMIN</H2>
+    <h2>ADMIN</h2>
+    <div class="header-right">
+        
+        <div class="notification-icon">
+            <a href="/orders">
+                <img src="{{ asset('image/notification.png') }}" alt="Notifications">
+                <span class="badge" id="notification-badge">0</span>
+            </a>
+            <a href="#" onclick="logout()" class="logout" >Logout</a>
+        </div>
+    </div>
 </div>
 
 <div class="sidebar">
@@ -43,20 +62,18 @@
         <a href="/categories">Categories</a>
       </li>
       <li>
-        <a href="#">Orders</a>
+        <a href="/orders">Orders</a>
       </li>
       <li>
         <a href="/shipping">Shipping Fees</a>
       </li>
       <li>
+        <a href="/reviews">Reviews</a>
+      </li>
+      <li>
         <a href="#">Suppliers</a>
       </li>
-      <li>
-        <a href="#">Reviews</a>
-      </li>
-      <li>
-        <a href="#" onclick="logout()">Logout</a>
-      </li>
+
     </ul>
 </div>
 
@@ -82,26 +99,8 @@
     });
 }
 
-function confirmDelete(userId) {
-        Swal.fire({
-            title: 'Are you sure you want to delete?',
-            text: "You won't be able to recover this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('delete-form-' + userId).submit();
-            }
-        })
-    }
 </script>
 
-<script src={{asset("js/sweetalert.min.js")}}></script> 
-<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-
-
+<script src={{asset("js/sweetalert.min.js")}}></script>
 </body>
 </html>

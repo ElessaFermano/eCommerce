@@ -4,41 +4,42 @@
 <br><br>
 <div class="container">
     <div class="h">
-        <h3 class="user">SHIPPING FEES</h3>
-        <a href="{{ route('shipping.create') }}" class="addButton">Add</a>
-        <br><br>
+        <h3 class="user">REVIEWS TABLE</h3>
+
         <table class="table">
            <thead>
             <tr>
                 <th>id</th>
-                <th>Province</th>
-                <th>Fee</th>
+                <th>User Name</th>
+                <th>Product Name</th>
+                <th>Comment</th>
                 <th>Actions</th>
             </tr>
            </thead>
            <tbody>
            @php
-                $counter = ($shippings->currentPage() - 1) * $shippings->perPage();
+                $counter = ($reviews->currentPage() - 1) * $reviews->perPage();
             @endphp
-               @foreach($shippings as $shipping)
+               @foreach($reviews as $review)
                <tr>
                <td>{{ $loop->iteration + $counter}}</td>
-                   <td>{{ $shipping->province }}</td>
-                   <td>{{ $shipping->fee }}</td>
+                   <td>{{ $review->user->first_name }}</td>
+                   <td>{{ $review->product->name }}</td>
+                   <td>{{ $review->comment }}</td>
                    <td>
-                       <a href="{{ route('shipping.edit', $shipping->id) }}" class="editButton">Edit</a>
+                       <a href="{{ route('reviews.edit', $review->id) }}" class="editButton">Edit</a>
 
-                       <form id="delete-form-{{ $shipping->id }}" action="{{ route('shipping.destroy', $shipping->id) }}" method="POST" style="display:inline;">
+                       <form id="delete-form-{{ $review->id }}" action="{{ route('reviews.destroy', $review->id) }}" method="POST" style="display:inline;">
                            @csrf
                            @method('DELETE')
-                           <button type="button" class="deleteButton" onclick="confirmDelete({{ $shipping->id }})">Delete</button>
+                           <button type="button" class="deleteButton" onclick="confirmDelete({{ $review->id }})">Delete</button>
                        </form>
                    </td>
                </tr>
                @endforeach
            </tbody>
         </table>
-        <div>{{$shippings->links()}}</div>
+        <div>{{$reviews->links()}}</div>
     </div>
 </div>
 <script>

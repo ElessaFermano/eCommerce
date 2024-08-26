@@ -70,4 +70,18 @@ class ShippingController extends Controller
         $shipping->delete();
         return redirect()->route('shipping.index');
     }
+    public function getShippingFee(Request $request)
+    {
+        $province = $request->query('province');
+        
+        // Find the shipping fee for the selected province
+        $shipping = Shipping::where('province', $province)->first();
+        
+        // Return the shipping fee or a default value if the province is not found
+        if ($shipping) {
+            return response()->json(['fee' => $shipping->fee]);
+        } else {
+            return response()->json(['fee' => 0.00]); // Default value if province is not found
+        }
+    }
 }

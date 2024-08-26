@@ -9,20 +9,17 @@ return new class extends Migration
     
     public function up(): void
     {
-        Schema::create('shipping_addresses', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('country')->default('Philippines');
-            $table->foreignId('shipping_id')->constrained('shippings')->onDelete('cascade');
-            $table->string('city');
-            $table->string('brgy');
-            $table->integer('zipcode');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->text('comment')->nullable(); 
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('shipping_addresses');
+        Schema::dropIfExists('reviews');
     }
 };

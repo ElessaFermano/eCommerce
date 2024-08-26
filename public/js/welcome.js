@@ -8,40 +8,52 @@ if (userID && userID != currentID) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const token = localStorage.getItem('access_token');
+const token = localStorage.getItem('access_token');
 
-    if (token) {
-        fetch('/api/user', {
-            method: 'GET',
-            headers: {
-                Authorization: 'Bearer ' + token,
-                accept: 'application/json',
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Unauthorized');
-            }
-            return response.json();
-        })
-        .then(response => {
-            localStorage.setItem('current_id', response.id);
-            document.getElementById('userName').textContent = response.first_name;
-            document.getElementById('cart').textContent = `{{ $cart ?? 0 }}`;
-            document.querySelectorAll('#UserID').forEach(input => {
-                input.value = response.id;
-            });
-
-        })
-        .catch(error => {
-            console.error('Error fetching user:', error);
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('user_id');
-            document.getElementById('userName').textContent = 'Guest';
-            document.getElementById('cart').textContent = '0';
-        });
-    } else {
-        document.getElementById('userName').textContent = 'Guest';
-        document.getElementById('cart').textContent = '0';
+if (token) {
+fetch('/api/user', {
+    method: 'GET',
+    headers: {
+        Authorization: 'Bearer ' + token,
+        accept: 'application/json',
     }
+})
+.then(response => response.json())
+
+.then(response => {
+    localStorage.setItem('current_id', response.id);
+    document.getElementById('cartItem').innerHTML = ` <a href="/cart/${response.id}" class="cart">
+      
+      <img src={{asset("image/cart.png")}} alt="">
+      <span id="cart"></span>
+  </a>`;
+    document.getElementById('userName').textContent = response.first_name;
+    document.getElementById('cart').textContent = `{{ $cart }}`;
+    document.querySelectorAll('#UserID').forEach(input => {
+        input.value = response.id;
+    });
+   
+})
+} else {
+document.getElementById('cart').textContent = `0`;
+document.getElementById('userName').textContent = 'Guest';
+}
 });
+
+function logout() {
+swal({
+title: "Are you sure you want to logout?",
+icon: "warning",
+buttons: ["Cancel", "Logout"],
+dangerMode: true,
+})
+.then((ifLogout) => {
+if (ifLogout) {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('current_id');
+    localStorage.removeItem('role');
+    window.location.href = '/';
+} 
+});
+}

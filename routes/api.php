@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/login', [LoginController::class, 'loginUser' ]);
 Route::post('/register', [RegisterController::class, 'registerUser']);
+
+Route::post('/orders', [OrderController::class, 'store']);

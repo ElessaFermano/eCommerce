@@ -30,11 +30,6 @@
             </div>
 
             <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" name="address" class="form-control" value="{{ $user->address }}" required>
-            </div>
-
-            <div class="form-group">
                 <label for="phone">Phone Number:</label>
                 <input type="text" name="phone" class="form-control" value="{{ $user->phone }}" required>
             </div>
