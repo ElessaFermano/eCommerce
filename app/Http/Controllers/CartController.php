@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Shipping;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -42,13 +43,15 @@ class CartController extends Controller
     {
         $userId = $request->input('user_id');
         $cartCount = Cart::where('user_id', $userId)->count();
-dd($cartCount);
+       dd($cartCount);
         return response()->json(['count' => $cartCount]);
     }
 
     public function viewCart(Request $request, $id)
     {
-
+        
+        $user_id = $request->input('user_id'); 
+        $provinces = Shipping::all();
         $cartItems = Cart::where('user_id', $id)->with('product')->get();
         $total = 0;
 
@@ -56,23 +59,8 @@ dd($cartCount);
            $partial  =   $cartItem->product->price * $cartItem->quantity;
            $total += $partial;
         }
-
         
-        return view('cart', compact('cartItems', 'total'));
+        return view('cart', compact('provinces','cartItems', 'total', 'user_id'));
     }
 
-    public function removeFromCart(Request $request, $id)
-    {
-        $userId = $request->input('user_id');
-
-        $cartItem = Cart::where('user_id', $userId)
-                         ->where('product_id', $id)
-                         ->first();
-
-        if ($cartItem) {
-            $cartItem->delete();
-        }
-
-        return redirect()->back()->with('success', 'Product removed from cart successfully!');
-    }
 }

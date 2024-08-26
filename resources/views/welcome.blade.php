@@ -7,9 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset('css/welcome.css')}}">
     <link rel="icon" href="data:,">
+<script>
+//   const token =localStorage.getItem('access_token');
+//   if(!token){
+//        window.location.href = '/';
+//     }
+//   let current_Id  =localStorage.getItem('current_id');
+//   let user_Id =localStorage.getItem('user_id');
+
+//   if(current_Id == user_Id){
+//     window.history.href = '/costumer/' + user_Id;
+//   }
+
+</script>
 
 </head>
 <body>
+@if(session('success'))
+<script>
+    Swal.fire({
+                title: 'Success!',
+                text: "{{ session('success') }}",
+                icon: 'success',
+                confirmButtonText: 'OK',
+                timer: 3000, // 3 seconds
+                timerProgressBar: true // Shows a progress bar for the ti
+            });
+</script>
+@endif
     <div class="header">
         <h2>theeSHOP</h2>
         <ul>
@@ -34,8 +59,23 @@
     <div class="main">
         <div class="">
         <img src="{{asset('image/coverphoto.jpg')}}" alt="" class="coverphoto">
+        <h2 class="shop-now">SHOP NOW!</h2>
         </div>
     </div>
+    <div class="space"> </div>
+
+    <section class="category">
+        <h1 class="title">Categories</h1>
+        <div class="row">
+            @foreach($byCategory as $categories)
+            <div>
+                <h5>{{$categories->category->name}}</h5>
+                <p><a href="{{url('byCategory', $categories->category->id)}}">Go Shop</a></p>
+            </div>
+            @endforeach
+        </div>
+    </section>
+
 <div class="space"></div>
     <section class="product">
         <h1 class="title">ALL PRODUCTS</h1>
@@ -52,22 +92,14 @@
                     <input type="hidden" name="user_id" id="UserID">
                     <button type="submit">Add to Cart</button>
                 </form>
+                <br><br>
+                <a href="{{route('reviews.show', $product->id)}}" class="review">Show Reviews</a>
             </div>
             @endforeach
         </div>
+
     </section>
-    <div class="space"> </div>
-    <section class="category">
-        <h1 class="title">Categories</h1>
-        <div class="row">
-            @foreach($byCategory as $categories)
-            <div>
-                <h5>{{$categories->category->name}}</h5>
-                <p><a href="{{url('byCategory', $categories->category->id)}}">Go Shop</a></p>
-            </div>
-            @endforeach
-        </div>
-    </section>
+    
     <div class="space"></div>
     <footer class="footer">
         <div>
@@ -130,9 +162,7 @@ function logout() {
             localStorage.removeItem('current_id');
             localStorage.removeItem('role');
             window.location.href = '/';
-        } else {
-          window.location.href = '/dashboard';
-        }
+        } 
     });
 }
     </script>

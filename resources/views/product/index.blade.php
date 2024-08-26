@@ -48,7 +48,6 @@
                   <td>
                        <a href="{{ route('products.edit', $product->id) }}" class="editButton">Edit</a>
 
-                       <!-- Delete Button and Form -->
                        <form id="delete-form-{{ $product->id }}" action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
                            @csrf
                            @method('DELETE')
@@ -60,4 +59,23 @@
         </tbody>
     </table>
 </div>
+<script>
+    
+function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Are you sure you want to delete?',
+            text: "You won't be able to recover this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + userId).submit();
+            }
+        })
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 @endsection

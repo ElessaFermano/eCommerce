@@ -11,4 +11,9 @@ class Shipping extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function shippingAddresses()
+    {
+        return $this->hasMany(ShippingAddress::class);
+    }
 }

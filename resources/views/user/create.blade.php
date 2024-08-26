@@ -25,11 +25,6 @@
         </div>
 
         <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" name="address" id="address" class="form-control" required>
-        </div>
-
-        <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" class="form-control" required>
         </div>

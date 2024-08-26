@@ -4,7 +4,7 @@
 <br><br>
 <div class="container">
     <div class="h">
-        <h3 class="user">USERS TABLE</h3>
+        <h3 class="user">ALL USERS</h3>
         <a href="{{ route('users.create') }}" class="addButton">Add User</a>
         <br><br>
         <table class="table">
@@ -14,7 +14,6 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Role</th>
-                <th>Address</th>
                 <th>Phone Number</th>
                 <th>Profile Picture</th>
                 <th>Email</th>
@@ -31,7 +30,6 @@
                    <td>{{ $user->first_name }}</td>
                    <td>{{ $user->last_name }}</td>
                    <td>{{ $user->role }}</td>
-                   <td>{{ $user->address }}</td>
                    <td>{{ $user->phone }}</td>
                    <td>
                        <img src="{{ $user->profile_pic ? asset('storage/' . $user->profile_pic) : asset('image/profdef.jpg') }}" alt="Profile" width="50px" height="50px" style="border-radius: 50%;">
@@ -53,9 +51,9 @@
         <div>{{$users->links()}}</div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+<script>
     
-     function confirmDelete(userId) {
+function confirmDelete(userId) {
         Swal.fire({
             title: 'Are you sure you want to delete?',
             text: "You won't be able to recover this!",
@@ -71,4 +69,5 @@
         })
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 @endsection

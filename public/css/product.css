@@ -60,23 +60,6 @@ h1{
     text-align: center;
 }
 
-.header {
-    background-color: teal;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-    margin: 0;
-    padding: 4px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-}
-
-.header h2 {
-    font-family: sans-serif;
-    color: rgb(252, 252, 252);
-    padding-left: 50px;
-}
-
 .sidebar {
     background: linear-gradient(to top left, rgb(73, 72, 72), rgb(157, 155, 155), whitesmoke);
     color: white;
