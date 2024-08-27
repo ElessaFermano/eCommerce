@@ -1,7 +1,25 @@
 @extends('dashboard')
 @section('content')
+<script>
+   const tokenn = localStorage.getItem('access_token');
+    if (!tokenn) {
+        window.location.href = "/";
+    }
+    fetch("/api/user", {
+        method: "GET",
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+        }
+    }).then(response => response.json())
+    .then(response => {
+        console.log(response);
+        if (response.role != 'admin') {
+            window.location.href = "/";
+        }
+    });
+</script>
 <div class="container">
-    <h1>Order List</h1>
+    <h3>LIST OF ALL ORDERS</h3>
     <br><br>
     <table class="table">
         <thead>
@@ -19,8 +37,8 @@
             @foreach($orders as $order)
                 <tr>
                     <td>{{ $order->id }}</td>
-                    <td>{{ $order->first_name }}</td>
-                    <td>{{ $order->shippingAddress->full_address ?? 'N/A' }}</td>
+                    <td>{{ $order->user->first_name . " " . $order->user->last_name}}</td>
+                    <td>{{ $order->shippingAddress->brgy . " " . $order->shippingAddress->city . " " . $order->shippingAddress->zipcode}}</td>
                     <td>{{ $order->payment_method }}</td>
                     <td>{{ $order->total }}</td>
                     <td>

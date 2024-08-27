@@ -23,7 +23,7 @@ class UserController extends Controller
         'first_name' => 'required',
         'last_name' => 'required',
         'role' => 'nullable',
-        'address' => 'required',
+        'address' => 'nullable',
         'email' => 'required|email|unique:users,email',
         'password' => 'required',
         'phone' => 'required',

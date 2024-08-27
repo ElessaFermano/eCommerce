@@ -19,9 +19,7 @@
     });
 </script>
 <div class="container">
-    <h1>Category List</h1>
-    <a href="{{ route('categories.create') }}" class="addCategory">Add New Category</a>
-    <br><br>
+    <h3>LIST OF ALL CATEGORIES</h3>
     <table class="table">
         <thead>
             <tr>
@@ -43,6 +41,9 @@
             @endforeach
         </tbody>
     </table>
+    
+    <a href="{{ route('categories.create') }}" class="addButton">Add New</a>
+    
 </div>
 <script>
     
