@@ -77,21 +77,6 @@
 }
 
 </style>
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function(){
-
-        fetch('http://127.0.0.1:8000/api/user', {
-            method: 'GET',
-            headers: {
-                Authorization: 'Bearer ' +localStorage.getItem('access_token'),
-                accept: 'application/json',
-            }
-        }).then(response => response.json())
-        .then(response => {
-            document.getElementById('currentUser').innerHTML = response.first_name;
-        })
-    });
-</script> -->
 <body>
     <div class="header">
         <h2>theeSHOP</h2>
@@ -116,9 +101,10 @@
         <p class="product-name">{{ucfirst($product->name)}}</p>
         <p class="product-price">Php {{$product->price}}</p>
         <div>
+            <h5><i> Reviews from our valued Customers</i></h5>
     @foreach($reviews as $review)
     
-    <h3 > {{$review->user->first_name}}</h3>
+    <h5 > {{$review->user->first_name . " " . $review->user->last_name}}</h5>
         <p>{{ $review->comment }}</p>
         <hr>
     @endforeach

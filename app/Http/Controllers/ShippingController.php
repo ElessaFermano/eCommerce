@@ -10,7 +10,7 @@ class ShippingController extends Controller
   
     public function index()
     {
-        $shippings = Shipping::simplePaginate(10);
+        $shippings = Shipping::simplePaginate(7);
         return view('shipping.index', compact('shippings'));
     }
 
@@ -20,20 +20,38 @@ class ShippingController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'province' => 'required',
-            'fee' => 'required',
-        ]);
+{
+    $request->validate([
+        'province' => 'required',
+        'fee' => 'nullable',
+    ]);
 
-        Shipping::create([
-            'province' => $request->province,
-            'fee' => $request->fee,
-        ]);
+    $fee = $request->fee ?? 100.00;
 
-        return redirect()->route('shipping.index');
+    Shipping::create([
+        'province' => $request->province,
+        'fee' => $fee,
+    ]);
+
+    return redirect()->route('shipping.index');
+}
+
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'province' => 'required',
+    //         'fee' => 'required',
+    //     ]);
+
+    //     Shipping::create([
+    //         'province' => $request->province,
+    //         'fee' => $request->fee,
+    //     ]);
+
+    //     return redirect()->route('shipping.index');
         
-    }
+    // }
 
     public function show(Shipping $shipping)
     {

@@ -1,16 +1,14 @@
 @extends('dashboard')
 @section('content')
 
-<br><br>
 <div class="container">
     <div class="h">
-        <h3 class="user">SHIPPING FEES</h3>
-        <a href="{{ route('shipping.create') }}" class="addButton">Add</a>
-        <br><br>
+        <h3>SHIPPING FEES</h3>
+       
         <table class="table">
            <thead>
             <tr>
-                <th>id</th>
+                <th>Id</th>
                 <th>Province</th>
                 <th>Fee</th>
                 <th>Actions</th>
@@ -38,8 +36,9 @@
                @endforeach
            </tbody>
         </table>
-        <div>{{$shippings->links()}}</div>
-    </div>
+        <div class="pagination">{{$shippings->links()}}</div>
+    </div>   
+    <a href="{{ route('shipping.create') }}" class="addButton">Add New</a>
 </div>
 <script>
     

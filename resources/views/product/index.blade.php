@@ -19,9 +19,9 @@
     });
 </script>
 <div class="container">
-    <h1>Products List</h1>
-    <a href="{{ route('products.create') }}" class="addProduct">Add New Product</a>
-    <br><br>
+    <h3>LIST OF ALL PRODUCTS</h3>
+    <a href="{{ route('products.create') }}" class="addButton">Add New Product</a>
+
     <table class="table">
         <thead>
             <tr>

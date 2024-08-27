@@ -4,12 +4,11 @@
 <br><br>
 <div class="container">
     <div class="h">
-        <h3 class="user">REVIEWS TABLE</h3>
-
+        <h3>LIST OF ALL REVIEWS</h3>
         <table class="table">
            <thead>
             <tr>
-                <th>id</th>
+                <th>Id</th>
                 <th>User Name</th>
                 <th>Product Name</th>
                 <th>Comment</th>
