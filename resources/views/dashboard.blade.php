@@ -71,7 +71,7 @@
         <a href="/reviews">Reviews</a>
       </li>
       <li>
-        <a href="#">Suppliers</a>
+        <a href="/suppliers">Suppliers</a>
       </li>
 
     </ul>

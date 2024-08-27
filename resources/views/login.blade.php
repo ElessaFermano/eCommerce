@@ -6,12 +6,12 @@
     <title>Login</title>
     <link rel="stylesheet" href="css/login.css">
     <script>
-  const token = localStorage.getItem('access_token');
+        const token = localStorage.getItem('access_token');
 
-  if(token){
-    window.location.href = '/dashboard';
-  }
-</script>
+        if (token) {
+            window.location.href = '/dashboard';
+        }
+    </script>
 </head>
 <body>
     <div class="login-form">
@@ -19,9 +19,9 @@
         <form id="LoginForm">
             <input type="email" name="email" placeholder="Enter your email" required>
             <input type="password" name="password" placeholder="Enter your password" required>
-            <p> Don't have an account yet? <a href="/register">SIGN UP</a></p>
+            <p>Don't have an account yet? <a href="/register">SIGN UP</a></p>
             <button type="submit">Login</button>
-            <p id="errorMessage" style="display:none; color:red;">Invalid Credentials</p>
+            <p id="errorMessage" style="display:none; color:red;"></p>
         </form>
     </div>
 
@@ -38,11 +38,49 @@
                     Accept: 'application/json',
                 }
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    console.error("Login Error:", response);
+                    throw new Error('Login failed');
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.status == 'success') {
                     localStorage.setItem('access_token', data.access_token); 
-                    window.location.href = '/dashboard'; 
+                    
+                    fetch('/api/user', {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${data.access_token}`,
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            console.error("User Data Error:", response);
+                            throw new Error('Failed to fetch user data');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        
+                        if (data.role == 'supplier') {
+                            localStorage.setItem('role', data.role);
+                            localStorage.setItem('access_token', data.access_token);
+                            localStorage.setItem('role_id', data.role.id);
+
+                            window.location.href = '/suppliers'; 
+                        } else {
+                            window.location.href = '/dashboard/'; 
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error", error);
+                        document.getElementById('errorMessage').textContent = "An error occurred while fetching user data. Please try again.";
+                        document.getElementById('errorMessage').style.display = 'block';
+                    });
+
                 } else {
                     document.getElementById('errorMessage').textContent = data.message;
                     document.getElementById('errorMessage').style.display = 'block';

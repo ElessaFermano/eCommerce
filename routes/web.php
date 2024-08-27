@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ShippingAddressController;
 use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -52,3 +53,5 @@ Route::put('/orders/{id}/status', [OrderController::class, 'updateStatus'])->nam
 
 Route::get('/products/{product}/reviews', [ProductController::class, 'showReviews']);
 Route::post('/products/{product}/reviews', [ProductController::class, 'addReview']);
+
+Route::get('/suppliers', [SupplierController::class, 'suppliers']);
