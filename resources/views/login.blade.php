@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,7 @@
     <link rel="stylesheet" href="css/login.css">
     <script>
   const token = localStorage.getItem('access_token');
+
   if(token){
     window.location.href = '/dashboard';
   }

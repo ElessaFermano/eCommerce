@@ -1,27 +1,10 @@
 @extends('dashboard')
 @section('content')
-<script>
-    const tokenn = localStorage.getItem('access_token');
-    if (!tokenn) {
-        window.location.href = "/";
-    }
-    fetch("/api/user", {
-        method: "GET",
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-        }
-    }).then(response => response.json())
-    .then(response => {
-        console.log(response);
-        if (response.role != 'admin') {
-            window.location.href = "/";
-        }
-    });
-</script>
+
 <br><br>
 <div class="container">
     <div class="h">
-        <h3 class="user">USERS TABLE</h3>
+        <h3 class="user">ALL USERS</h3>
         <a href="{{ route('users.create') }}" class="addButton">Add User</a>
         <br><br>
         <table class="table">
@@ -31,7 +14,6 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Role</th>
-                <th>Address</th>
                 <th>Phone Number</th>
                 <th>Profile Picture</th>
                 <th>Email</th>
@@ -39,13 +21,15 @@
             </tr>
            </thead>
            <tbody>
+           @php
+                $counter = ($users->currentPage() - 1) * $users->perPage();
+            @endphp
                @foreach($users as $user)
                <tr>
-                   <td>{{ $user->id }}</td>
+               <td>{{ $loop->iteration + $counter}}</td>
                    <td>{{ $user->first_name }}</td>
                    <td>{{ $user->last_name }}</td>
                    <td>{{ $user->role }}</td>
-                   <td>{{ $user->address }}</td>
                    <td>{{ $user->phone }}</td>
                    <td>
                        <img src="{{ $user->profile_pic ? asset('storage/' . $user->profile_pic) : asset('image/profdef.jpg') }}" alt="Profile" width="50px" height="50px" style="border-radius: 50%;">
@@ -64,6 +48,26 @@
                @endforeach
            </tbody>
         </table>
+        <div>{{$users->links()}}</div>
     </div>
 </div>
+<script>
+    
+function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Are you sure you want to delete?',
+            text: "You won't be able to recover this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + userId).submit();
+            }
+        })
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 @endsection

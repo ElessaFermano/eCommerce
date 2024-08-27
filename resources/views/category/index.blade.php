@@ -37,10 +37,30 @@
                     <td>{{ $category->name }}</td>
                     <td>
                        <a href="{{ route('categories.edit', $category->id) }}" class="editButton">Edit</a>
+                       
                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+<script>
+    
+function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Are you sure you want to delete?',
+            text: "You won't be able to recover this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + userId).submit();
+            }
+        })
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 @endsection
