@@ -10,6 +10,18 @@
     <link rel="icon" href="data:,">
 </head>
 <body>
+@if(session('success'))
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: "{{ session('success') }}",
+            icon: 'success',
+            confirmButtonText: 'OK',
+            timer: 3000, 
+            timerProgressBar: true
+        });
+    </script>
+    @endif
     <div class="header">
         <h2>theeSHOP</h2>
         <ul>
@@ -109,7 +121,7 @@
                 <label for="payment_method">Payment Method:</label>
                 <select id="payment_method" name="payment_method" required>
                     <option value="COD">Cash on Delivery (COD)</option>
-                    <option value="gcash">Gcash</option>
+                   
                 </select>
             </div>
             <div class="checkout-container">
@@ -119,6 +131,7 @@
     </div>
 
 <script src={{asset("js/cart.js")}}></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
 

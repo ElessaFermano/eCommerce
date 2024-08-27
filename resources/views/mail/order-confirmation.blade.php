@@ -7,11 +7,9 @@
 </head>
 <body>
 <div class="header">
-    @foreach($order as $or)
 
-    <h1>Hello, {{$or->user->first_name}}.Thank You for Your Order!</h1>
+    <h4>Hello, your order has been processed. Thank you for shopping with us!</h3>
 
-    @endforeach
 </div>
 </body>
 </html>
