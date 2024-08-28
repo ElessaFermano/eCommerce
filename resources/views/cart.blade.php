@@ -10,18 +10,7 @@
     <link rel="icon" href="data:,">
 </head>
 <body>
-@if(session('success'))
-    <script>
-        Swal.fire({
-            title: 'Success!',
-            text: "{{ session('success') }}",
-            icon: 'success',
-            confirmButtonText: 'OK',
-            timer: 3000, 
-            timerProgressBar: true
-        });
-    </script>
-    @endif
+
     <div class="header">
         <h2>theeSHOP</h2>
         <ul>
@@ -71,10 +60,19 @@
             @endif
         </div>
 
+        @php
+        $options = [];
+
+        foreach($cartItems as $item){
+        $options[] = $item->product->id;
+        }
+       
+        @endphp
         <form action="{{ route('orders.store') }}" method="POST">
             @csrf
 
-            <input type="hidden" name="user_id" id="user_id">
+            <input type="hidden" name="user_id" id="user_id">   
+            <input type="hidden" name="product_id" value="{{json_encode($options)}}">    
 
             <h4>SPECIFIC ADDITIONAL ADDRESS</h4>
             <div class="form-group">
@@ -131,7 +129,7 @@
     </div>
 
 <script src={{asset("js/cart.js")}}></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>
 

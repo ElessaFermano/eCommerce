@@ -22,13 +22,12 @@ class OrderConfirmationMail extends Mailable
     public function build()
     {
         return $this->view('emails.order_confirmation')
-                    // ->subject('Order Confirmation - Order #' . $this->order->order_number)
-                    ->with(['order' => $this->order]);
+                    ->with([
+                        'order_id' => $this->order->order_id,
+                        'message' => 'Thank you for shopping with us!',
+                    ]);
     }
 
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
         return new Envelope(

@@ -110,11 +110,19 @@ const tokenn = localStorage.getItem('access_token');
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/suppliers">
+            <a class="nav-link" href="#">
               <span class="menu-icon">
                 <i class="mdi mdi-contacts"></i>
               </span>
               <span class="menu-title">Suppliers</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/inventory">
+              <span class="menu-icon">
+                <i class="mdi mdi-contacts"></i>
+              </span>
+              <span class="menu-title">Inventory</span>
             </a>
           </li>
 

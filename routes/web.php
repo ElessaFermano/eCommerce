@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -52,3 +53,5 @@ Route::put('/orders/{id}/status', [OrderController::class, 'updateStatus'])->nam
 
 Route::get('/products/{product}/reviews', [ProductController::class, 'showReviews']);
 Route::post('/products/{product}/reviews', [ProductController::class, 'addReview']);
+
+Route::get('/inventory', [InventoryController::class, 'index']);
