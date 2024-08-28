@@ -117,7 +117,7 @@ class OrderController extends Controller
     public function orderAPI()
     {
         $orders = Order::get();
-        dd($orders);
+        
         if($orders)
         {
             return response()->json(['status' => 200,
