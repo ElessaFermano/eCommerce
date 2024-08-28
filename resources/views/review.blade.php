@@ -8,75 +8,6 @@
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
     <link rel="icon" href="data:,">
 </head>
-<style>
-    .review-section {
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
-    width: 400px;
-    margin: 20px auto;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-}
-
-.review-section img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.review-section h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.review-section p.product-name {
-    font-size: 16px;
-    color: #555;
-    margin: 0;
-}
-
-.review-section p.product-price {
-    font-size: 14px;
-    color: #888;
-    margin: 5px 0 15px 0;
-}
-
-.review-section textarea {
-    width: 100%;
-    height: 80px;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    resize: none;
-}
-
-.review-section button.submit-comment {
-    background-color: #28a745;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-    width: 100%;
-}
-
-.review-section button.submit-comment:hover {
-    background-color: #218838;
-}
-
-.review-section .review-content {
-    text-align: left;
-}
-
-</style>
 <body>
     <div class="header">
         <h2>theeSHOP</h2>
@@ -100,17 +31,17 @@
     <div class="review-content">
         <p class="product-name">{{ucfirst($product->name)}}</p>
         <p class="product-price">Php {{$product->price}}</p>
-        <div>
-            <h5><i> Reviews from our valued Customers</i></h5>
+        <div class="review">
+            <h5>REVIEWS FROM OUR VALUED CUSTOMERS</h5>
     @foreach($reviews as $review)
     
-    <h5 > {{$review->user->first_name . " " . $review->user->last_name}}</h5>
+    <h6> {{$review->user->first_name . " " . $review->user->last_name}}</h6>
         <p>{{ $review->comment }}</p>
         <hr>
     @endforeach
 </div>
 
-        <h3>Leave a Comment</h3>
+        <h5><i>  Leave a Comment</i></h5>
         <form action="{{route('reviews.store')}}" method="post">
             @csrf
             <input type="hidden" name="user_id" id="user_id">

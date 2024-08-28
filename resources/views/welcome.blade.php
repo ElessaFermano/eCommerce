@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
     <link rel="icon" href="data:,">
-<!-- <script>
-    const role =localStorage.getItem('role');
-    if(role != 'customer')
-{
-    window.location.href = "/dashboard";
-}
-</script> -->
+<script>
+    // const role =localStorage.getItem('role');
+    // // console.log()
+   
+    // if(role){
+    //     if(role != 'admin'){
+    //         window.location.href = '/';
+    //     }
+    // }
+  
+</script>
 </head>
 <body>
 
@@ -42,7 +46,8 @@
                 @endif
 
             <div class="dropdown-content">
-                <a href="#">My Orders</a>
+                <div id="myOrder" ></div>
+
                 <a href="#" onclick="logout()">Logout</a>
             </div>
 
@@ -53,11 +58,11 @@
     <div class="main">
         <div class="">
             <img src="{{ asset('image/coverphoto.jpg') }}" alt="" class="coverphoto">
-            <h2 class="shop-now">SHOP NOW!</h2>
+          
         </div>
     </div>
     <div class="space"></div>
-
+<!-- 
     <section class="category">
         <h1 class="title">Categories</h1>
         <div class="row">
@@ -68,7 +73,7 @@
             </div>
             @endforeach
         </div>
-    </section>
+    </section> -->
 
     <div class="space"></div>
     <section class="product">
@@ -99,7 +104,7 @@
     </footer>
 
     <script>
-        const userID = localStorage.getItem('user_id');
+        let userID = localStorage.getItem('user_id');
         const currentID = new URL(window.location.href).searchParams.get('user_id');
 
         if (userID && userID != currentID) {
@@ -130,6 +135,8 @@
                     document.getElementById('cart').textContent = `{{ $cart }}`;
                     document.querySelectorAll('#UserID').forEach(input => {
                         input.value = response.id;
+
+                        document.getElementById('myOrder').innerHTML = `<a href="{{route('orders.show', '')}}/${userID}">My Orders</a>`;
                     });
                 })
             } else {
