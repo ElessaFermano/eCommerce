@@ -52,13 +52,13 @@
                             </select>
                         </form>
                     </td>
-                    <!-- <td>
+                    <td>
                         <a href="#" class="btn btn-danger" onclick="confirmDelete({{ $order->id }})">Delete</a>
                         <form id="delete-form-{{ $order->id }}" action="{{ route('orders.destroy', $order->id) }}" method="POST" style="display: none;">
                             @csrf
                             @method('DELETE')
                         </form>
-                    </td> -->
+                    </td>
                 </tr>
             @endforeach
         </tbody>

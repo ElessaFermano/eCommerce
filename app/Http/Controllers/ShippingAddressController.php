@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class ShippingAddressController extends Controller
 {
-    public function index()
-    {
-
-    }
-
     public function create()
     {
         $provinces = Shipping::select('province')->distinct()->get();
@@ -50,27 +45,4 @@ class ShippingAddressController extends Controller
         ]);
     }
 
-
-    public function show(ShippingAddress $shippingAddress)
-    {
-        //
-    }
-
-
-    public function edit(ShippingAddress $shippingAddress)
-    {
-        //
-    }
-
-
-    public function update(Request $request, ShippingAddress $shippingAddress)
-    {
-        //
-    }
-
-
-    public function destroy(ShippingAddress $shippingAddress)
-    {
-        //
-    }
 }

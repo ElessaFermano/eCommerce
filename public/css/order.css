@@ -1,0 +1,56 @@
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.orderContainer {
+    background-color: whitesmoke;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px black;
+    text-align: center;
+}
+
+li br {
+    margin-bottom: 10px;
+}
+
+li span {
+    font-weight: bold;
+    color: black;
+}
+
+li .order-status {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+img {
+    width: 60px;
+    height: 60px;
+    border: #333 0.5px solid;
+}
+
+.orderPage {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.total {
+    color: red;
+}
+

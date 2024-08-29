@@ -8,20 +8,12 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-
     public function index()
     {
        $reviews = Review::simplePaginate(5);
        $rev = Review::with('user')->where('product_id')->get();
        return view('review.index', compact('reviews', 'rev'));
     }
-
-
-    public function create()
-    {
-        //
-    }
-
 
     public function store(Request $request)
     {
@@ -49,18 +41,6 @@ class ReviewController extends Controller
         $product = Product::findorFail($id);
         $reviews = Review::with('user')->where('product_id', $id)->get();
         return view('review', compact('reviews', 'product'));
-    }
-
-
-    public function edit(Review $review)
-    {
-        //
-    }
-
-
-    public function update(Request $request, Review $review)
-    {
-        //
     }
 
     public function destroy(Review $review)

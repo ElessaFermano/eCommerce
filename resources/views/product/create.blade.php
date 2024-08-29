@@ -43,10 +43,8 @@
                 <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
                 </select>
-    
         </div>
-
-        <button type="submit" class="addProduct">Add Product</button>
+        <button type="submit" class="addButton">Add Product</button>
     </form>
 </div>
 @endsection

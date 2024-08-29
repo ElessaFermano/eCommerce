@@ -95,7 +95,10 @@ class ShippingSeeder extends Seeder
         ];
 
         foreach ($provinces as $province) {
-            DB::table('shippings')->updateOrInsert(['province' => $province]);
+            DB::table('shippings')->updateOrInsert(
+                ['province' => $province],
+                ['fee' => 100] 
+            );
         }
     
     }

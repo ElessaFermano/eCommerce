@@ -22,7 +22,7 @@
             <input type="number" name="fee" class="form-control" id="fee">
         </div>
 
-        <button type="submit" class="addShipping">Save</button>
+        <button type="submit" class="addButton">Save</button>
     </form>
 </div>
 @endsection

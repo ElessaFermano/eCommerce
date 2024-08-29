@@ -9,16 +9,16 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index()
-{
-    $products = Product::all();
-    return view('product.index', compact('products'));
-}
+    {
+        $products = Product::all();
+        return view('product.index', compact('products'));
+    }
 
     public function create()
-{
-    $categories = Category::all(); // Fetch all categories
-    return view('product.create', compact('categories')); // Pass categories to the view
-}
+    {
+        $categories = Category::all(); 
+        return view('product.create', compact('categories')); 
+    }
 
     public function store(Request $request)
     {
@@ -43,8 +43,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        $categories = Category::all(); // Fetch all categories
-        return view('product.edit', compact('product', 'categories')); // Pass categories to the view
+        $categories = Category::all(); 
+        return view('product.edit', compact('product', 'categories')); 
     }
     
     public function update(Request $request, $id)
