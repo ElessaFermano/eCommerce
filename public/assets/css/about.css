@@ -1,0 +1,46 @@
+.about-section {
+    padding: 60px 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+    background: url('/image/aboutpage.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-section h1 {
+    font-size: 36px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.about-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify; /* Justify the text */
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.about-section .content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify; /* Ensure text-align is set for the whole content block */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .about-section h1 {
+        font-size: 28px;
+    }
+    
+    .about-section p {
+        font-size: 16px;
+    }
+}
