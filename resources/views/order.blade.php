@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Orders</title>
-    <link rel="stylesheet" href="{{ asset('css/order.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/order.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/cart.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/welcome.css') }}">
     <link rel="icon" href="data:,">
 </head>
 <body>
@@ -24,7 +24,7 @@
                         <span><img src="{{ asset('storage/' . $product->image) }}" alt="Product Image"></span><br><br>
                         <span>Product Name:</span> {{ $product->name }}<br>
                         <span>Product Price:</span> {{ $product->price }}<br>
-                        <span>Quantity: </span> {{ $product->pivot->quantity ?? 'N/A' }}<br>
+
                     </div>
                 </li>
                 @endforeach

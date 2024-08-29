@@ -34,9 +34,12 @@
             </tr>
         </thead>
         <tbody>
+        @php
+            $counter = ($orders->currentPage() - 1) * $orders->perPage();
+        @endphp
             @foreach($orders as $order)
                 <tr>
-                    <td>{{ $order->id }}</td>
+                <td>{{ $loop->iteration + $counter}}</td>
                     <td>{{ $order->user->first_name . " " . $order->user->last_name}}</td>
                     <td>{{ $order->shippingAddress->brgy . " " . $order->shippingAddress->city . " " . $order->shippingAddress->zipcode}}</td>
                     <td>{{ $order->payment_method }}</td>
@@ -63,6 +66,8 @@
             @endforeach
         </tbody>
     </table>
+    
+    <div class="pagination">{{$orders->links()}}</div>
 </div>
 <script>
     function confirmDelete(orderId) {

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Cart</title>
-    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/cart.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/welcome.css') }}">
     <link rel="icon" href="data:,">
 </head>
 <body>
@@ -68,7 +68,7 @@
         }
        
         @endphp
-        <form action="{{ route('orders.store') }}" method="POST">
+        <form action="{{ route('orders.store') }}" method="POST" id="orderForm">
             @csrf
 
             <input type="hidden" name="user_id" id="user_id">   
@@ -128,8 +128,7 @@
         </form>
     </div>
 
-<script src={{asset("js/cart.js")}}></script>
+<script src="{{ asset('js/cart.js') }}"></script>
 
 </body>
 </html>
-

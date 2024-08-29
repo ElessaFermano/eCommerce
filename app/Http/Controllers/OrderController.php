@@ -72,24 +72,27 @@ class OrderController extends Controller
         'message' => 'Thank you for shopping with us! Your order ID is: ' . $order->order_id,
     ]);
 
-    return redirect()->to('/customer/' . $request->user_id)->with('success', 'Your order is in process.');
-}
+        return redirect()->to('/customer/' . $request->user_id)->with('success', 'Your order is in process.');
+    }
 
     public function show($id)
-{
-    $orders = Order::where('user_id', $id)->get();
+    {
+        $orders = Order::where('user_id', $id)->get();
+        $productIds = $orders->pluck('product_id');
+        $products = Product::whereIn('id', $productIds)->get();
 
-    $productIds = $orders->pluck('product_id');
-
-    $products = Product::whereIn('id', $productIds)->get();
-
-    return view('order', compact('products'));
-}
+        return view('order', compact('products'));
+    }
+    public function destroy(Order $order)
+    {
+        $order->delete();
+         return redirect()->route('orders.index');
+    }
 
     public function updateStatus(Request $request, $id)
     {
         $order = Order::findOrFail($id);
-        $order->status = $request->status;
+        $order->status =  $request->input('status', $order->status);
         $order->save();
 
         return redirect()->route('orders.index')->with('success', 'Order status updated successfully');
@@ -111,11 +114,6 @@ class OrderController extends Controller
             'message' => 'Not Found',
         ]);
         }
-    }
-    public function destroy(Order $order)
-    {
-        $order->delete();
-         return redirect()->route('orders.index');
     }
 
   

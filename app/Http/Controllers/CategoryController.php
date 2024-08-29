@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::simplePaginate(5);
         return view('category.index', compact('categories'));
     }
 

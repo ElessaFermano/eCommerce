@@ -39,6 +39,7 @@ Route::get('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'register']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/customer/{id}', [WelcomeController::class, 'customer']);
+Route::get('/about', [WelcomeController::class, 'about']);
 
 Route::get('/byCategory/{id}', [CategoryController::class, 'byCategory']);
 Route::get('/category', [CategoryController::class, 'byCategory']);

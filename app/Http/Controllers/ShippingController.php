@@ -10,7 +10,7 @@ class ShippingController extends Controller
   
     public function index()
     {
-        $shippings = Shipping::simplePaginate(7);
+        $shippings = Shipping::simplePaginate(5);
         return view('shipping.index', compact('shippings'));
     }
 
@@ -58,7 +58,7 @@ class ShippingController extends Controller
 
         return redirect()->route('shipping.index');
     }
-    
+
     public function destroy(Shipping $shipping)
     {
         $shipping->delete();

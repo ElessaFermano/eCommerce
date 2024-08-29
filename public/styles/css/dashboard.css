@@ -52,23 +52,10 @@ body {
     height: 24px;
 }
 
-.editUserButton,
-.addButton,
-.editButton,
-.addCategory,
-.addProduct {
-    background-color: teal;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    padding: 5px 8px;
-    text-decoration: none;
-    font-size: small;
-}
 
 .user-container {
     display: flex;
-    justify-content: center; /* Center content horizontally */
+    justify-content: center; 
     padding: 20px;
     width: 100%;
     box-shadow: 0 5px 5px;
@@ -96,24 +83,14 @@ th {
     padding-left: 0;
 }
 
-button,
-.addButton,
-.editButton,
-.addCategory,
-.addProduct {
-    background-color: teal;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    padding: 5px 8px;
-}
+
 
 form input {
     display: block;
     align-items: center;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid lightslategray;
+    /* border: 1px solid rgb(110, 110, 110); */
 }
 
 .addUser {
@@ -161,18 +138,12 @@ form input {
     text-decoration: none;
 }
 
-.sidebar li a:hover {
-    background-color: teal;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    color: white;
-}
 
 .main-content {
-    margin-left: 250px; /* Sidebar width */
+    margin-left: 250px; 
     width: calc(100% - 250px);
     display: flex;
-    justify-content: center; /* Center container horizontally */
+    justify-content: center; 
     padding-top: 70px;
     transition: margin-left 0.3s, width 0.3s;
 }
@@ -184,11 +155,10 @@ form input {
     transition: 0.3s ease;
     border-radius: 10px;
     width: 100%;
-    max-width: 1200px; /* Maximum width to prevent it from stretching too wide */
-    margin: 0; /* Centered horizontally within .main-content */
+    max-width: 1200px; 
+    margin: 0; 
 }
 
-/* Responsive Styles */
 @media (max-width: 1067px) {
     .sidebar {
         width: 200px;
