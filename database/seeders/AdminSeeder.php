@@ -21,8 +21,8 @@ class AdminSeeder extends Seeder
                 'role' => 'admin',
                 'address' =>'Hilongos',
                 'phone' => '09987645332',
-                'email' => 'elessa@gmail.com',
-                'password' => Hash::make('12345678'),
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('admin123'),
 
             ]
         ]);

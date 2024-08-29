@@ -62,18 +62,19 @@
         </div>
     </div>
     <div class="space"></div>
-<!-- 
+
     <section class="category">
         <h1 class="title">Categories</h1>
         <div class="row">
-            @foreach($byCategory as $categories)
+          
+            @foreach($category as $categories)
             <div>
-                <h5>{{ $categories->category->name }}</h5>
-                <p><a href="{{ url('byCategory', $categories->category->id) }}">Go Shop</a></p>
+                <h5>{{ $categories->name }}</h5>
+                <p><a href="{{ url('byCategory', $categories->id) }}">Go Shop</a></p>
             </div>
             @endforeach
         </div>
-    </section> -->
+    </section>
 
     <div class="space"></div>
     <section class="product">

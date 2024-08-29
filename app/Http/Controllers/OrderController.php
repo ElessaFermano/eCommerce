@@ -65,12 +65,12 @@ class OrderController extends Controller
 
     Mail::to($user->email)->send(new OrderConfirmationMail($order));
      
-     Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
+    Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
         'apikey' => env('SMS_API_KEY'),
         'number' => '09973208548',
         'message' => 'Thank you for shopping with us! Your order ID is: ' . $order->order_id,
     ]);
-    $admin = User::where('role', 'admin')->first(); // Assuming there's an admin role
+    $admin = User::where('role', 'admin')->first(); 
     $admin->notify(new OrderPlaced($order));
 
 
@@ -82,6 +82,7 @@ class OrderController extends Controller
         $orders = Order::where('user_id', $id);
         $products = $orders->pluck('product_id', 'id');
         
+  
         foreach($products as $product){
               $pr = Product::find($product)->all();
               
