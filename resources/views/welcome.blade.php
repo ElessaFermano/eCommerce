@@ -7,17 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
     <link rel="icon" href="data:,">
-<script>
-    // const role =localStorage.getItem('role');
-    // // console.log()
-   
-    // if(role){
-    //     if(role != 'admin'){
-    //         window.location.href = '/';
-    //     }
-    // }
-  
-</script>
+
 </head>
 <body>
 
