@@ -22,39 +22,41 @@
 
     <div class="orderPage">
         <h1>My Orders</h1>
-        <ul>
-            @php
-            use App\Models\Order;
-            @endphp
 
-            @foreach ($pr as $order)
-            <li>
-                <div class="orderContainer">
-                    @php
-                    $m = Order::where('product_id', $order->id);
-                    $orderDetail = $m->first();
-                    @endphp
-                    <span><img src="{{asset('storage/'. $order->image)}}" alt="Product Image"></span><br><br>
-                    <span>Product Name:</span> {{ $order->name }}<br>
-                    <span>Product Price:</span> {{ $order->price }}<br>
-                    <span>Quantity: </span> <br>
-                </div>
-            </li>
-            @endforeach
+        @if($pr->isEmpty())
+            <p>You don't have orders yet.</p>
+        @else
+            <ul>
+                @foreach ($pr as $order)
+                <li>
+                    <div class="orderContainer">
+                        @php
+                        use App\Models\Order;
+                        $m = Order::where('product_id', $order->id)->first();
+                        @endphp
+
+                        <span><img src="{{ asset('storage/' . $order->image) }}" alt="Product Image"></span><br><br>
+                        <span>Product Name:</span> {{ $order->name }}<br>
+                        <span>Product Price:</span> {{ $order->price }}<br>
+                        <span>Quantity: </span> {{ $order->quantity }}<br>
+                    </div>
+                </li>
+                @endforeach
+            </ul>
+
             <div class="space" style="height:50px"></div>
-            <span>Subtotal:</span> Php {{ $orderDetail->subtotal }}<br>
-            <span>Shipping Fee:</span> Php {{ $orderDetail->shipping }}<br>
+            <span>Subtotal:</span> Php {{ $m->subtotal ?? 0 }}<br>
+            <span>Shipping Fee:</span> Php {{ $m->shipping ?? 0 }}<br>
             <div class="total">
-                <span class="total">Total:</span> Php {{ $orderDetail->total }}<br>
+                <span class="total">Total:</span> Php {{ $m->total ?? 0 }}<br>
             </div>
             <div class="space" style="height:50px"></div>
             <span>Status:</span>
             <span class="order-status {{ strtolower($order->status) }}">{{ ucfirst($order->status) }}</span>
-        </ul>
+        @endif
     </div>
 
     <style>
- 
         h1 {
             text-align: center;
             color: #333;
@@ -111,6 +113,6 @@
         }
     </style>
 
-    <script src={{asset("js/cart.js")}}></script>
+    <script src="{{ asset('js/cart.js') }}"></script>
 </body>
 </html>
