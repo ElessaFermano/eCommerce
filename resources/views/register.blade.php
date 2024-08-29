@@ -10,7 +10,6 @@
     <div class="container">
         <div class="card">
             <h3>theeSHOP</h3>
-            <!-- <div class="card-header">REGISTER</div> -->
             <div class="card-body">
                 <form id="registerForm" enctype="multipart/form-data">
                     @csrf
