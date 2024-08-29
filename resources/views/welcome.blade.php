@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>theeSHOP</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('styles/css/welcome.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/about.css') }}">
+    <style>
+        
+    </style>
 </head>
 <body>
     <div class="header">
         <h2>theeSHOP</h2>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#">Categories</a></li>
             <li><a href="/login">Login</a></li>
         </ul>
         <div class="icon">
             <div id="cartItem"></div>
-
             <div class="dropdown">
                 @if(isset($user))
                 <a class="user" href="#">
@@ -31,38 +33,22 @@
                     <span id="userName">Guest</span>
                 </a>
                 @endif
-
-            <div class="dropdown-content">
-                <div id="myOrder" ></div>
-
-                <a href="#" onclick="logout()">Logout</a>
-            </div>
-
+                <div class="dropdown-content">
+                    <div id="myOrder"></div>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="main">
+    <div class="main" id="home">
         <div class="">
             <img src="{{ asset('image/coverphoto.jpg') }}" alt="" class="coverphoto">
-          
         </div>
     </div>
     <div class="space"></div>
 
-    <!-- <section class="category">
-    <h1 class="title">Categories</h1>
-    <div class="row">
-        @foreach($category as $categories)
-        <div class="category-card">
-            <h5>{{ $categories->name }}</h5>
-            <p><a href="{{ url('byCategory', $categories->id) }}">Go Shop</a></p>
-        </div>
-        @endforeach
-    </div>
-</section> -->
-
-    <!-- <div class="space"></div> -->
+    <!-- Products Section -->
     <section class="product">
         <h1 class="title">ALL PRODUCTS</h1>
         <div class="row">
@@ -82,6 +68,24 @@
                 <a href="{{ route('reviews.show', $product->id) }}" class="review">Show Reviews</a>
             </div>
             @endforeach
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about" id="about">
+        <div class="about-section">
+            <h1>About Us</h1>
+            <div class="content">
+                <p>
+                    Welcome to our company! We are dedicated to providing the best services to our clients.
+                    Our mission is to deliver quality and excellence in everything we do. With years of experience
+                    in the industry, we are confident in our ability to meet your needs and exceed your expectations.
+                </p>
+                <p>
+                    Our team is made up of passionate and skilled professionals who are committed to helping you achieve your goals.
+                    We believe in the power of collaboration and innovation, and we work tirelessly to bring you the latest solutions.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -133,21 +137,7 @@
         });
 
         function logout() {
-            swal({
-                title: "Are you sure you want to logout?",
-                icon: "warning",
-                buttons: ["Cancel", "Logout"],
-                dangerMode: true,
-            })
-            .then((ifLogout) => {
-                if (ifLogout) {
-                    localStorage.removeItem('access_token');
-                    localStorage.removeItem('user_id');
-                    localStorage.removeItem('current_id');
-                    localStorage.removeItem('role');
-                    window.location.href = '/';
-                }
-            });
+     
         }
     </script>
 
