@@ -20,8 +20,7 @@
 </script>
 <div class="container">
     <h3>LIST OF ALL PRODUCTS</h3>
-    <a href="{{ route('products.create') }}" class="addButton">Add New Product</a>
-
+ 
     <table class="table">
         <thead>
             <tr>
@@ -35,9 +34,13 @@
             </tr>
         </thead>
         <tbody>
+        @php
+                $counter = ($products->currentPage() - 1) * $products->perPage();
+            @endphp
             @foreach($products as $product)
                 <tr>
-                    <td>{{ $product->id }}</td>
+                    
+               <td>{{ $loop->iteration + $counter}}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
@@ -58,6 +61,10 @@
             @endforeach
         </tbody>
     </table>
+    
+    <div class="pagination">{{$products->links()}}</div>
+    <a href="{{ route('products.create') }}" class="addButton">Add New Product</a>
+
 </div>
 <script>
     

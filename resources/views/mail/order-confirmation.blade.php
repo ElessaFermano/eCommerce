@@ -1,15 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Order Confirmation</title>
 </head>
 <body>
-<div class="header">
-
-    <h4>Hello, your order has been processed. Thank you for shopping with us!</h3>
-
-</div>
+    <p>Hello, your order ID is: {{ $order_id }}</p>
+    <p>Thank you for your purchase!</p>
 </body>
 </html>

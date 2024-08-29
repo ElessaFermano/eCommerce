@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -39,6 +40,7 @@ Route::get('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'register']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/customer/{id}', [WelcomeController::class, 'customer']);
+Route::get('/about', [WelcomeController::class, 'about']);
 
 Route::get('/byCategory/{id}', [CategoryController::class, 'byCategory']);
 Route::get('/category', [CategoryController::class, 'byCategory']);
@@ -54,4 +56,4 @@ Route::put('/orders/{id}/status', [OrderController::class, 'updateStatus'])->nam
 Route::get('/products/{product}/reviews', [ProductController::class, 'showReviews']);
 Route::post('/products/{product}/reviews', [ProductController::class, 'addReview']);
 
-Route::get('/suppliers', [SupplierController::class, 'suppliers']);
+Route::get('/inventory', [InventoryController::class, 'index']);

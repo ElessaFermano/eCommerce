@@ -42,7 +42,7 @@
             <input type="file" name="profile_pic" id="profile_pic" class="form-control">
         </div>
         <input type="hidden" name="role" value="supplier">
-        <button type="submit"> Add User</button>
+        <button type="submit" class="addButton"> Add User</button>
     </form>
 </div>
 @endsection

@@ -2,7 +2,7 @@ const tokenn = localStorage.getItem('access_token');
     if (!tokenn) {
         window.location.href = "/";
     }
-    fetch("http://127.0.0.1:8000/api/user", {
+    fetch("/api/user", {
         method: "GET",
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('access_token'),

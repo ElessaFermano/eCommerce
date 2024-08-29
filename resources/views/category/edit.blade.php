@@ -27,7 +27,7 @@
         <input type="text" name="name" class="form-control" value="{{ $category->name }}" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="addButton">Update</button>
 </form>
 
 @endsection

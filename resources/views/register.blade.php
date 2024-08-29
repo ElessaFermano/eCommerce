@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-<link rel="stylesheet" href="{{asset('css/register.css')}}">
+<link rel="stylesheet" href="{{asset('styles/css/register.css')}}">
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <div class="card-header">REGISTER</div>
+            <h3>theeSHOP</h3>
             <div class="card-body">
                 <form id="registerForm" enctype="multipart/form-data">
                     @csrf

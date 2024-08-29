@@ -3,27 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Orders</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Orders</title>
+    <link rel="stylesheet" href="{{ asset('styles/css/order.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/cart.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/welcome.css') }}">
+    <link rel="icon" href="data:,">
 </head>
 <body>
-    <h1>My Orders</h1>
+    <div class="orderPage">
+        <h1>My Orders</h1>
 
-    @if ($orders->count())
-        <ul>
-            @foreach ($orders as $order)
+        @if($products->isEmpty())
+            <p>You don't have orders yet.</p>
+        @else
+            <ul>
+                @foreach ($products as $product)
                 <li>
-                    Order ID: {{ $order->id }}<br>
-                    Subtotal: Php {{ $order->subtotal }}<br>
-                    Shipping Fee: Php {{ $order->shipping }}<br>
-                    Total: Php {{ $order->total }}<br>
-                    Status: {{ $order->status }}
-                </li>
-            @endforeach
-        </ul>
+                    <div class="orderContainer">
+                        <span><img src="{{ asset('storage/' . $product->image) }}" alt="Product Image"></span><br><br>
+                        <span>Product Name:</span> {{ $product->name }}<br>
+                        <span>Product Price:</span> {{ $product->price }}<br>
 
-        {{ $orders->links() }}
-    @else
-        <p>You have no orders yet.</p>
-    @endif
+                    </div>
+                </li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
+
+    <script src="{{ asset('js/cart.js') }}"></script>
 </body>
 </html>

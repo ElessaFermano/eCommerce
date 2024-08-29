@@ -18,7 +18,7 @@
             <input type="text" name="name" class="form-control" id="name">
         </div>
 
-        <button type="submit" class="addProduct">Save</button>
+        <button type="submit" class="addButton">Save</button>
     </form>
 </div>
 @endsection

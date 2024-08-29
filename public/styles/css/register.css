@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    border-radius: 20px;
+    width: 400px;
+    max-width: 450px;
+    margin: auto; 
+    padding: 25px;
+    box-shadow: 0 5px 10px;
+    background-color: rgb(232, 232, 232);
+}
+
+h3 {
+    text-align: center;
+    color: rgb(6, 22, 40);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #000;
+    font-size: small;
+}
+
+.form-group input {
+  
+    margin: 10px 0; 
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border:none;
+    box-sizing: border-box;
+}
+
+.btn {
+    height: 40px; 
+    width: 100px;
+    background-color:rgb(0, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: large;
+}
+
+.btn:hover {
+    background-color: #333;
+}
+
+#errorMessage {
+    display: none;
+    color: red;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .card-header {
+        font-size: 20px;
+    }
+
+    .btn {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .card-header {
+        font-size: 18px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+}

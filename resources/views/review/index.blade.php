@@ -1,7 +1,6 @@
 @extends('dashboard')
 @section('content')
 
-<br><br>
 <div class="container">
     <div class="h">
         <h3>LIST OF ALL REVIEWS</h3>
@@ -38,7 +37,7 @@
                @endforeach
            </tbody>
         </table>
-        <div>{{$reviews->links()}}</div>
+        <div class="pagination">{{$reviews->links()}}</div>
     </div>
 </div>
 <script>

@@ -31,7 +31,7 @@
         <input type="text" name="fee" class="form-control" value="{{ $shipping->fee }}" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="addButton">Update</button>
 </form>
 
 @endsection

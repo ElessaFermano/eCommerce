@@ -66,7 +66,7 @@
                </tbody>
             </table>
         </div> 
-        <div>{{$users->links()}}</div>
+        <div class="pagination">{{$users->links()}}</div>
     </div>
     <a href="{{ route('users.create') }}" class="addButton">Add User</a>
 

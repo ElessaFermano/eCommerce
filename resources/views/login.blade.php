@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{{asset("styles/css/login.css")}}">
     <script>
         const token = localStorage.getItem('access_token');
 
@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="login-form">
-        <h3>Sign In</h3>
+        <h3>theeSHOP</h3>
         <form id="LoginForm">
             <input type="email" name="email" placeholder="Enter your email" required>
             <input type="password" name="password" placeholder="Enter your password" required>

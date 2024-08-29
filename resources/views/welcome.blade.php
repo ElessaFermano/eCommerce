@@ -5,24 +5,15 @@
     <title>theeSHOP</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
-    <link rel="icon" href="data:,">
-<!-- <script>
-    const role =localStorage.getItem('role');
-    if(role != 'customer')
-{
-    window.location.href = "/dashboard";
-}
-</script> -->
+    <link rel="stylesheet" href="{{ asset('styles/css/welcome.css') }}">
 </head>
 <body>
-
     <div class="header">
         <h2>theeSHOP</h2>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#">Categories</a></li>
             <li><a href="/login">Login</a></li>
         </ul>
         <div class="icon">
@@ -42,7 +33,8 @@
                 @endif
 
             <div class="dropdown-content">
-                <a href="#">My Orders</a>
+                <div id="myOrder" ></div>
+
                 <a href="#" onclick="logout()">Logout</a>
             </div>
 
@@ -53,24 +45,24 @@
     <div class="main">
         <div class="">
             <img src="{{ asset('image/coverphoto.jpg') }}" alt="" class="coverphoto">
-            <h2 class="shop-now">SHOP NOW!</h2>
+          
         </div>
     </div>
     <div class="space"></div>
 
-    <section class="category">
-        <h1 class="title">Categories</h1>
-        <div class="row">
-            @foreach($byCategory as $categories)
-            <div>
-                <h5>{{ $categories->category->name }}</h5>
-                <p><a href="{{ url('byCategory', $categories->category->id) }}">Go Shop</a></p>
-            </div>
-            @endforeach
+    <!-- <section class="category">
+    <h1 class="title">Categories</h1>
+    <div class="row">
+        @foreach($category as $categories)
+        <div class="category-card">
+            <h5>{{ $categories->name }}</h5>
+            <p><a href="{{ url('byCategory', $categories->id) }}">Go Shop</a></p>
         </div>
-    </section>
+        @endforeach
+    </div>
+</section> -->
 
-    <div class="space"></div>
+    <!-- <div class="space"></div> -->
     <section class="product">
         <h1 class="title">ALL PRODUCTS</h1>
         <div class="row">
@@ -99,7 +91,7 @@
     </footer>
 
     <script>
-        const userID = localStorage.getItem('user_id');
+        let userID = localStorage.getItem('user_id');
         const currentID = new URL(window.location.href).searchParams.get('user_id');
 
         if (userID && userID != currentID) {
@@ -130,6 +122,8 @@
                     document.getElementById('cart').textContent = `{{ $cart }}`;
                     document.querySelectorAll('#UserID').forEach(input => {
                         input.value = response.id;
+
+                        document.getElementById('myOrder').innerHTML = `<a href="{{route('orders.show', '')}}/${userID}">My Orders</a>`;
                     });
                 })
             } else {
