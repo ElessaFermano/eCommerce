@@ -37,7 +37,7 @@
                @endforeach
            </tbody>
         </table>
-        <div>{{$reviews->links()}}</div>
+        <div class="pagination">{{$reviews->links()}}</div>
     </div>
 </div>
 <script>

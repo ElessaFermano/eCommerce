@@ -26,4 +26,9 @@ class WelcomeController extends Controller
         return view('welcome', compact('items', 'category', 'cart'));
     }
     
+    public function about()
+    {
+        return view('about');
+    }
+    
 }

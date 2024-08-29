@@ -29,9 +29,12 @@
             </tr>
         </thead>
         <tbody>
+        @php
+            $counter = ($categories->currentPage() - 1) * $categories->perPage();
+            @endphp
             @foreach($categories as $category)
                 <tr>
-                    <td>{{ $category->id }}</td>
+                <td>{{ $loop->iteration + $counter}}</td>
                     <td>{{ $category->name }}</td>
                     <td>
                        <a href="{{ route('categories.edit', $category->id) }}" class="editButton">Edit</a>
@@ -42,6 +45,7 @@
         </tbody>
     </table>
     
+    <div class="pagination">{{$categories->links()}}</div>
     <a href="{{ route('categories.create') }}" class="addButton">Add New</a>
     
 </div>

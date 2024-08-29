@@ -33,7 +33,6 @@
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Supplier</th>
-                    <th>Actions</th>
                 </tr>
                </thead>
                <tbody id="tBody" >

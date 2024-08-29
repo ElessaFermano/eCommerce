@@ -4,23 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin Dashboard</title>
+
     <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/jvectormap/jquery-jvectormap.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/owl-carousel-2/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/user.css') }}">
     <script>
-        const tokenn = localStorage.getItem('access_token');
-        if (!tokenn) {
+        const accessToken = localStorage.getItem('access_token');
+        if (!accessToken) {
             window.location.href = "/";
         }
         fetch("/api/user", {
             method: "GET",
             headers: {
-                Authorization: 'Bearer ' + tokenn,
+                Authorization: 'Bearer ' + accessToken,
             }
         }).then(response => response.json())
         .then(response => {
@@ -32,12 +28,11 @@
 </head>
 <body>
     <div class="container-scroller">
-        <!-- Sidebar -->
+        
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item profile">
                     <div class="profile-desc">
-                        <!-- Add profile details or dropdown if needed -->
                     </div>
                 </li>
                 <li class="nav-item menu-items">
@@ -135,7 +130,7 @@
                             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
                                 <i class="mdi mdi-bell"></i>
                                 @if ($notifications->count())
-                                    <span class="count bg-danger">{{ $notifications->count() }}</span>
+                                    <div class="count"> {{ " ". $notifications->count() }}</div>
                                 @endif
                             </a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
@@ -164,7 +159,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                                 <div class="navbar-profile">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">ADMIN</p>
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name" id="userRole"> </p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>
                             </a>
@@ -213,6 +208,23 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            fetch('/api/user', {
+                method: 'GET',
+                headers:{
+                    Authorization: 'Bearer ' +localStorage.getItem('access_token'),
+                    Accept : 'application/json',
+                }
+            }).then(response => response.json())
+            .then(response => {
+                if(response)
+            {
+                document.getElementById('userRole').innerHTML = response.role;
+            }
+            })
+        })
+
+
         function logout() {
             swal({
                 title: "Are you sure you want to logout?",
@@ -232,13 +244,12 @@
             });
         }
     </script>
-    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
-    <script src="{{ asset('assets/vendors/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <script src="{{ asset('assets/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
+  
+    <script src={{asset("js/sweetalert.min.js")}}></script>
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/misc.js"></script>
+    
 </body>
 </html>

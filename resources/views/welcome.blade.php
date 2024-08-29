@@ -5,7 +5,7 @@
     <title>theeSHOP</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/welcome.css') }}">
 </head>
 <body>
     <div class="header">
@@ -13,7 +13,7 @@
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#">Categories</a></li>
             <li><a href="/login">Login</a></li>
         </ul>
         <div class="icon">
@@ -50,20 +50,19 @@
     </div>
     <div class="space"></div>
 
-    <section class="category">
-        <h1 class="title">Categories</h1>
-        <div class="row">
-          
-            @foreach($category as $categories)
-            <div>
-                <h5>{{ $categories->name }}</h5>
-                <p><a href="{{ url('byCategory', $categories->id) }}">Go Shop</a></p>
-            </div>
-            @endforeach
+    <!-- <section class="category">
+    <h1 class="title">Categories</h1>
+    <div class="row">
+        @foreach($category as $categories)
+        <div class="category-card">
+            <h5>{{ $categories->name }}</h5>
+            <p><a href="{{ url('byCategory', $categories->id) }}">Go Shop</a></p>
         </div>
-    </section>
+        @endforeach
+    </div>
+</section> -->
 
-    <div class="space"></div>
+    <!-- <div class="space"></div> -->
     <section class="product">
         <h1 class="title">ALL PRODUCTS</h1>
         <div class="row">
