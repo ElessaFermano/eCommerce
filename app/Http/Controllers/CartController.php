@@ -20,10 +20,7 @@ class CartController extends Controller
             exit(); 
         }
         $product = Product::findOrFail($id);
-
-        $cartItem = Cart::where('user_id', $userId)
-                         ->where('product_id', $product->id)
-                         ->first();
+        $cartItem = Cart::where('user_id', $userId)->where('product_id', $product->id)->first();
 
         if ($cartItem) {
             $cartItem->quantity++;

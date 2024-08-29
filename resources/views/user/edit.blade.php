@@ -45,7 +45,7 @@
                 <img src="{{ $user->profile_pic ? asset('storage/' . $user->profile_pic) : asset('image/profdef.jpg') }}" alt="Profile" width="100px" height="100px" style="border-radius: 50%;">
             </div>
 
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="addButton">Update</button>
         </form>
     </div>
 </div>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('shippings', function (Blueprint $table) {
             $table->id();
             $table->string('province');
-            $table->decimal('fee',8,2)->default(0.00);
+            $table->decimal('fee',8,2);
             $table->timestamps();
         });
     }

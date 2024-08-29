@@ -20,8 +20,7 @@
 </script>
 <div class="container">
     <h3>LIST OF ALL PRODUCTS</h3>
-    <a href="{{ route('products.create') }}" class="addButton">Add New Product</a>
-
+ 
     <table class="table">
         <thead>
             <tr>
@@ -58,6 +57,8 @@
             @endforeach
         </tbody>
     </table>
+    <a href="{{ route('products.create') }}" class="addButton">Add New Product</a>
+
 </div>
 <script>
     

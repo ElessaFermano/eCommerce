@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Mail\OrderConfirmationMail;
 use App\Models\Cart;
+use App\Models\Notification;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ShippingAddress;
 use App\Models\User;
-use App\Notifications\OrderPlaced;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
@@ -20,11 +20,6 @@ class OrderController extends Controller
        $orders = Order::simplePaginate(5);
        $ord = Order::with('user')->where('shipping_address_id')->first();
        return view('order.index', compact('orders', 'ord'));
-        
-    }
-
-    public function create()
-    {
         
     }
 
@@ -59,6 +54,12 @@ class OrderController extends Controller
         'order_id' => rand(100000, 999999),  
 
     ]);
+
+    Notification::create([
+        'user_id' => $user->id,
+        'message' => $user->first_name . ' ' . $user->last_name . ' ' . 'placed an order.',
+        'timestamp' => now(),
+    ]);
  }
    
     Cart::where('user_id', $request->user_id)->delete();
@@ -70,42 +71,21 @@ class OrderController extends Controller
         'number' => '09973208548',
         'message' => 'Thank you for shopping with us! Your order ID is: ' . $order->order_id,
     ]);
-    $admin = User::where('role', 'admin')->first(); 
-    $admin->notify(new OrderPlaced($order));
-
 
     return redirect()->to('/customer/' . $request->user_id)->with('success', 'Your order is in process.');
 }
 
     public function show($id)
-    {
-        $orders = Order::where('user_id', $id);
-        $products = $orders->pluck('product_id', 'id');
-        
-  
-        foreach($products as $product){
-              $pr = Product::find($product)->all();
-              
-        }
-        return view('order', compact('pr'));
-    }
+{
+    $orders = Order::where('user_id', $id)->get();
 
+    $productIds = $orders->pluck('product_id');
 
-    public function edit(Order $order)
-    {
-        
-    }
+    $products = Product::whereIn('id', $productIds)->get();
 
-    public function update(Request $request, Order $order)
-    {
-        
-    }
+    return view('order', compact('products'));
+}
 
-
-    public function destroy(Order $order)
-    {
-        
-    }
     public function updateStatus(Request $request, $id)
     {
         $order = Order::findOrFail($id);
@@ -131,6 +111,11 @@ class OrderController extends Controller
             'message' => 'Not Found',
         ]);
         }
+    }
+    public function destroy(Order $order)
+    {
+        $order->delete();
+         return redirect()->route('orders.index');
     }
 
   

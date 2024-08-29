@@ -1,7 +1,6 @@
 @extends('dashboard')
 @section('content')
 
-<br><br>
 <div class="container">
     <div class="h">
         <h3>LIST OF ALL REVIEWS</h3>
