@@ -12,7 +12,8 @@
                     <th>id</th>
                     <th>Description</th>
                     <th>Unit</th>
-                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th>Stocks</th>
                     <th>Price</th>
                     <th>Supplier</th>
                 </tr>
@@ -40,6 +41,7 @@
                         '<td>' + response.data[i].id + '</td>' +
                         '<td>' + response.data[i].description + '</td>' +
                         '<td>' + response.data[i].unit + '</td>' +
+                        '<td>' + response.data[i].image + '</td>' +
                         '<td>' + response.data[i].quantity + '</td>' +
                         '<td>' + response.data[i].price + '</td>' +
                         '<td>' + response.data[i].supplier_id + '</td>' +
