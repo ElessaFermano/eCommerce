@@ -41,7 +41,7 @@
                         '<td>' + response.data[i].id + '</td>' +
                         '<td>' + response.data[i].description + '</td>' +
                         '<td>' + response.data[i].unit + '</td>' +
-                        '<td><img src="https://inventorymanagement.online/storage/' + response.data[i].image + '" alt="Product Image" style="width: 100px; height: auto;"></td>' +
+                        '<td><img src="https://inventorymanagement.online/storage/' + response.data[i].image + '" alt="Product Image" style="width: 50px; height: 50px;"></td>' +
                         '<td>' + response.data[i].quantity + '</td>' +
                         '<td>' + response.data[i].price + '</td>' +
                         '<td>' + response.data[i].supplier_id + '</td>' +
