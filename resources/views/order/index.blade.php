@@ -31,9 +31,7 @@
                             <td>{{ $order->product_count }}</td>
                             <td>{{ $order->total_amount }}</td>
                             <td>{{ \Carbon\Carbon::parse($order->first_order_date)->format('F d, Y h:i A') }}</td> 
-                            <td>
-                             
-                            </td>
+                            
                             <td>
                                 <form id="delete-form-{{ $order->user_id }}" action="{{ route('orders.destroy', $order->user_id) }}" method="POST" style="display: inline;">
                                     @csrf
