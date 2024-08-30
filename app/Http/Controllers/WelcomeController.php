@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -14,10 +13,9 @@ class WelcomeController extends Controller
     {
         $items = Product::all();
         $category = Category::all();
-        $inventories = Inventory::all();
         $cart = 0;
 
-        return view('welcome', compact('items', 'category', 'cart', 'inventories'));
+        return view('welcome', compact('items', 'category', 'cart'));
     }
     public function customer(Request $request, $id)
     {
