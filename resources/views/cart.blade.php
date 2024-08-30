@@ -73,7 +73,7 @@
             <input type="hidden" name="user_id" id="user_id">   
             <input type="hidden" name="product_id" value="{{json_encode($options)}}">    
 
-            <h4>SPECIFIC ADDITIONAL ADDRESS</h4>
+            <h4>YOUR SPECIFIC ADDRESS</h4>
             <div class="form-group">
                 <label for="country">Country:</label>
                 <input type="text" id="country" name="country" value="Philippines" required>

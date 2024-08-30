@@ -124,7 +124,7 @@
         });
 
         function logout() {
-            swal({
+               swal({
                 title: "Are you sure you want to logout?",
                 icon: "warning",
                 buttons: ["Cancel", "Logout"],
@@ -140,7 +140,7 @@
                     window.location.href = '/dashboard';
                 }
             });
-  
+     
         }
     </script>
 
