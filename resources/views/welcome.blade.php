@@ -124,8 +124,23 @@
         });
 
         function logout() {
-     
-     
+            swal({
+                title: "Are you sure you want to logout?",
+                icon: "warning",
+                buttons: ["Cancel", "Logout"],
+                dangerMode: true,
+            })
+            .then((ifLogout) => {
+                if (ifLogout) {
+                    localStorage.removeItem('access_token');
+                    localStorage.removeItem('user_id');
+                    localStorage.removeItem('current_id');
+                    window.location.href = '/';
+                } else {
+                    window.location.href = '/dashboard';
+                }
+            });
+  
         }
     </script>
 
