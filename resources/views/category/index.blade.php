@@ -1,26 +1,10 @@
 @extends('dashboard')
 @section('content')
-<script>
-    const tokenn = localStorage.getItem('access_token');
-    if (!tokenn) {
-        window.location.href = "/";
-    }
-    fetch("/api/user", {
-        method: "GET",
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-        }
-    }).then(response => response.json())
-    .then(response => {
-        console.log(response);
-        if (response.role != 'admin') {
-            window.location.href = "/";
-        }
-    });
-</script>
+
 <div class="container">
     <h3>LIST OF ALL CATEGORIES</h3>
-    <table class="table">
+    <div class="table-responsive">
+    <table class="table custom-table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -43,11 +27,10 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
-    
+    </table>  
     <div class="pagination">{{$categories->links()}}</div>
-    <a href="{{ route('categories.create') }}" class="addButton">Add New</a>
-    
+    <a href="{{ route('categories.create') }}" class="addButton">Add New</a>  
+    </div>
 </div>
 <script>
     
@@ -55,7 +38,6 @@ function confirmDelete(userId) {
         Swal.fire({
             title: 'Are you sure you want to delete?',
             text: "You won't be able to recover this!",
-            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',

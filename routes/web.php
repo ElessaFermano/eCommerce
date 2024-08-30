@@ -40,9 +40,7 @@ Route::get('/register', [RegisterController::class, 'register']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/customer/{id}', [WelcomeController::class, 'customer']);
 Route::get('/about', [WelcomeController::class, 'about']);
-
-Route::get('/byCategory/{id}', [CategoryController::class, 'byCategory']);
-Route::get('/category', [CategoryController::class, 'byCategory']);
+Route::get('totals', [DashboardController::class, 'total']);
 
 Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart/{id}', [CartController::class, 'viewCart']);

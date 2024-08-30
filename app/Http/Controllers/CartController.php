@@ -40,7 +40,7 @@ class CartController extends Controller
     {
         $userId = $request->input('user_id');
         $cartCount = Cart::where('user_id', $userId)->count();
-       dd($cartCount);
+       
         return response()->json(['count' => $cartCount]);
     }
 

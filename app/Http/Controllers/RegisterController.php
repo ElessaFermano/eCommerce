@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'message' => 'User registered successfully', 'user' => $user, 201,
         ]);
     }
-    return response()->json(['message' => 'Unsuccessful!']);
+        return response()->json(['message' => 'Unsuccessful!']);
 }
 public function register()
     {

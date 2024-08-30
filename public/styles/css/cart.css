@@ -74,23 +74,6 @@ body {
 }
 
 
-.checkoutButton{
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #036451;
-    color: #ffffff;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.checkoutButton:hover {
-    background-color: #0ab43d;
-    transform: translateY(-2px);
-}
-
 .checkout-container {
     text-align: center;
     margin-top: 20px;
@@ -105,7 +88,7 @@ table {
 }
 
 thead th {
-    background-color: #036451;
+    background-color: #00475b;
     color: white;
     padding: 12px;
     text-transform: uppercase;
@@ -164,7 +147,7 @@ select:focus {
 }
 
 .submit-button {
-    background-color: #007bff;
+    background-color: #001a36;
     color: white;
     padding: 10px 15px;
     border: none;

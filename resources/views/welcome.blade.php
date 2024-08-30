@@ -19,22 +19,14 @@
         <div class="icon">
             <div id="cartItem"></div>
 
-            <div class="dropdown">
-                @if(isset($user))
-                <a class="user" href="#">
-                    <img src="{{ $user->profile_pic ? asset('storage/' . $user->profile_pic) : asset('image/profile.png') }}" alt="Profile" class="profile-img">
-                    <span id="userName">{{ $user->first_name ?? 'Guest' }}</span>
-                </a>
-                @else
+            <div class="dropdown">      
                 <a class="user" href="#">
                     <img src="{{ asset('image/profile.png') }}" alt="Profile" class="profile-img">
                     <span id="userName">Guest</span>
                 </a>
-                @endif
-
+                
             <div class="dropdown-content">
                 <div id="myOrder" ></div>
-
                 <a href="#" onclick="logout()">Logout</a>
             </div>
 
@@ -50,19 +42,6 @@
     </div>
     <div class="space"></div>
 
-    <!-- <section class="category">
-    <h1 class="title">Categories</h1>
-    <div class="row">
-        @foreach($category as $categories)
-        <div class="category-card">
-            <h5>{{ $categories->name }}</h5>
-            <p><a href="{{ url('byCategory', $categories->id) }}">Go Shop</a></p>
-        </div>
-        @endforeach
-    </div>
-</section> -->
-
-    <!-- <div class="space"></div> -->
     <section class="product">
         <h1 class="title">ALL PRODUCTS</h1>
         <div class="row">

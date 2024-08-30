@@ -11,27 +11,55 @@
     <link rel="icon" href="data:,">
 </head>
 <body>
+       <div class="header">
+        <h2>theeSHOP</h2>
+        <ul>
+            <li><a id="home">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+        <div class="icon">
+            <div id="cartItem"></div>
+            <a class="user" href="#">
+                <img src="{{ asset('image/profile.png') }}" alt="">
+                <span id="userName"></span>
+            </a>
+            <a href="#" class="logout"></a>
+        </div>
+    </div>
     <div class="orderPage">
         <h1>My Orders</h1>
 
         @if($products->isEmpty())
             <p>You don't have orders yet.</p>
         @else
-            <ul>
+            <ul class="orderList">
                 @foreach ($products as $product)
                 <li>
                     <div class="orderContainer">
-                        <span><img src="{{ asset('storage/' . $product->image) }}" alt="Product Image"></span><br><br>
-                        <span>Product Name:</span> {{ $product->name }}<br>
-                        <span>Product Price:</span> {{ $product->price }}<br>
-
+                        <div class="productImage">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image">
+                        </div>
+                        <div class="productDetails">
+                            <span class="productName">Product Name: {{ $product->name }}</span><br>
+                            <span class="productPrice">Product Price: {{ $product->price }}</span>
+                        </div>
                     </div>
                 </li>
                 @endforeach
             </ul>
         @endif
     </div>
+    
+<script>
 
-    <script src="{{ asset('js/cart.js') }}"></script>
+let home = localStorage.getItem('current_id');
+if (home){
+    document.getElementById('home').href = '/customer/' + home;
+    }
+    document.getElementById('user_id').value = home;
+
+</script>
 </body>
 </html>
