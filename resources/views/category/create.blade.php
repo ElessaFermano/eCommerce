@@ -1,7 +1,7 @@
 @extends('dashboard')
 @section('content')
 <div class="container">
-    <h2>ADD NEW CATEGORY</h2>
+    <h3>ADD NEW CATEGORY</h3>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

@@ -22,10 +22,9 @@
 <div class="container">
     <div class="h">
         <h3>LIST OF ALL USERS</h3>
- 
-        <div class="table-responsive">
-            <table class="table custom-table">
-               <thead>
+            <div class="table-responsive">
+                <table class="table custom-table">
+                <thead>
                 <tr>
                     <th>id</th>
                     <th>First Name</th>
@@ -36,9 +35,9 @@
                     <th>Email</th>
                     <th>Actions</th>
                 </tr>
-               </thead>
-               <tbody>
-               @php
+                </thead>
+                <tbody>
+                @php
                     $counter = ($users->currentPage() - 1) * $users->perPage();
                 @endphp
                    @foreach($users as $user)
@@ -61,7 +60,7 @@
                                <button type="button" class="deleteButton" onclick="confirmDelete({{ $user->id }})">Delete</button>
                            </form>
                        </td>
-                   </tr>
+                    </tr>
                    @endforeach
                </tbody>
             </table>
@@ -72,11 +71,11 @@
 
 </div>
 <script>
+
 function confirmDelete(userId) {
     Swal.fire({
         title: 'Are you sure you want to delete?',
         text: "You won't be able to recover this!",
-        icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -85,7 +84,7 @@ function confirmDelete(userId) {
         if (result.isConfirmed) {
             document.getElementById('delete-form-' + userId).submit();
         }
-    })
+    });
 }
 </script>
 

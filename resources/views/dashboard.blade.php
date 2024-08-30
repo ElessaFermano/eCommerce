@@ -30,13 +30,16 @@
     <div class="container-scroller">
         
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="logo">
+                <h4>theeSHOP</h4>
+            </div>
             <ul class="nav">
                 <li class="nav-item profile">
                     <div class="profile-desc">
                     </div>
                 </li>
                 <li class="nav-item menu-items">
-                    <a class="nav-link" href="/dashboard">
+                    <a class="nav-link" href="/totals">
                         <span class="menu-icon">
                             <i class="mdi mdi-speedometer"></i>
                         </span>
@@ -89,14 +92,6 @@
                             <i class="mdi mdi-star"></i>
                         </span>
                         <span class="menu-title">Reviews</span>
-                    </a>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="/suppliers">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-cash-multiple"></i>
-                        </span>
-                        <span class="menu-title">Suppliers</span>
                     </a>
                 </li>
                 <li class="nav-item menu-items">

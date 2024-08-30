@@ -46,7 +46,6 @@ function confirmDelete(userId) {
         Swal.fire({
             title: 'Are you sure you want to delete?',
             text: "You won't be able to recover this!",
-            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',

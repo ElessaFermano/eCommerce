@@ -21,26 +21,23 @@
         </ul>
         <div class="icon">
             <div id="cartItem"></div>
-            <div class="dropdown">
-                @if(isset($user))
-                <a class="user" href="#">
-                    <img src="{{ $user->profile_pic ? asset('storage/' . $user->profile_pic) : asset('image/profile.png') }}" alt="Profile" class="profile-img">
-                    <span id="userName">{{ $user->first_name ?? 'Guest' }}</span>
-                </a>
-                @else
+
+            <div class="dropdown">      
                 <a class="user" href="#">
                     <img src="{{ asset('image/profile.png') }}" alt="Profile" class="profile-img">
                     <span id="userName">Guest</span>
                 </a>
-                @endif
-                <div class="dropdown-content">
-                    <div id="myOrder"></div>
-                    <a href="#" onclick="logout()">Logout</a>
-                </div>
+                
+            <div class="dropdown-content">
+                <div id="myOrder" ></div>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+
             </div>
         </div>
     </div>
 
+    <div class="main" id="home">
     <div class="main" id="home">
         <div class="">
             <img src="{{ asset('image/coverphoto.jpg') }}" alt="" class="coverphoto">
@@ -48,7 +45,6 @@
     </div>
     <div class="space"></div>
 
-    <!-- Products Section -->
     <section class="product">
         <h1 class="title">ALL PRODUCTS</h1>
         <div class="row">
@@ -68,6 +64,24 @@
                 <a href="{{ route('reviews.show', $product->id) }}" class="review">Show Reviews</a>
             </div>
             @endforeach
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about" id="about">
+        <div class="about-section">
+            <h1>About Us</h1>
+            <div class="content">
+                <p>
+                    Welcome to our company! We are dedicated to providing the best services to our clients.
+                    Our mission is to deliver quality and excellence in everything we do. With years of experience
+                    in the industry, we are confident in our ability to meet your needs and exceed your expectations.
+                </p>
+                <p>
+                    Our team is made up of passionate and skilled professionals who are committed to helping you achieve your goals.
+                    We believe in the power of collaboration and innovation, and we work tirelessly to bring you the latest solutions.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -137,6 +151,7 @@
         });
 
         function logout() {
+     
      
         }
     </script>

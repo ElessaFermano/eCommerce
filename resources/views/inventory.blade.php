@@ -1,24 +1,6 @@
 @extends('dashboard')
 @section('content')
-<script>
-   const tokenn = localStorage.getItem('access_token');
-    if (!tokenn) {
-        window.location.href = "/";
-    }
-    fetch("/api/user", {
-        method: "GET",
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-        }
-    }).then(response => response.json())
-    .then(response => {
-        console.log(response);
-        if (response.role != 'admin') {
-            window.location.href = "/";
-        }
-    });
-</script>
-<br><br>
+
 <div class="container">
     <div class="h">
         <h3>INVENTORY</h3>

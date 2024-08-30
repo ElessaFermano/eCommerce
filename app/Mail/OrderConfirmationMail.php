@@ -27,7 +27,6 @@ class OrderConfirmationMail extends Mailable
                         'message' => 'Thank you for shopping with us!',
                     ]);
     }
-
     public function envelope(): Envelope
     {
         return new Envelope(

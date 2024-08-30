@@ -74,7 +74,6 @@ class ShippingController extends Controller
         if ($shipping) {
             return response()->json(['fee' => $shipping->fee]);
         }
-
         return response()->json(['fee' => null], 404); 
     }
   

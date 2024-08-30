@@ -9,7 +9,7 @@
 <br><br>
 <div class="container">
     <div class="h">
-        <h3 class="user">EDIT CATEGORY</h3>
+        <h3>EDIT CATEGORY</h3>
         @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

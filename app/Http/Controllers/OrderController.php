@@ -16,19 +16,20 @@ use Illuminate\Support\Facades\Mail;
 class OrderController extends Controller
 {
     public function index()
-    {
-       $orders = Order::simplePaginate(5);
-       $ord = Order::with('user')->where('shipping_address_id')->first();
-       return view('order.index', compact('orders', 'ord'));
-        
-    }
+{
+    $orders = Order::with('user', 'shippingAddress')
+        ->selectRaw('user_id, shipping_address_id, payment_method, SUM(total) as total_amount, COUNT(*) as product_count, MIN(created_at) as first_order_date')
+        ->groupBy('user_id', 'shipping_address_id', 'payment_method')
+        ->paginate(5);
 
+    return view('order.index', compact('orders'));
+}
     public function store(Request $request)
     {
-    $productID = json_decode($request->product_id);
-    $user = User::find($request->user_id);
+        $productID = json_decode($request->product_id);
+        $user = User::find($request->user_id);
 
-    if (!$user) {
+        if (!$user){
         return redirect()->back()->with('error', 'User not found.');
     }
 
@@ -81,7 +82,7 @@ class OrderController extends Controller
         $productIds = $orders->pluck('product_id');
         $products = Product::whereIn('id', $productIds)->get();
 
-        return view('order', compact('products'));
+        return view('order', compact('products', 'orders'));
     }
     public function destroy(Order $order)
     {
@@ -100,13 +101,11 @@ class OrderController extends Controller
 
     public function orderAPI()
     {
-        $orders = Order::get();
-        
+        $orders = Order::get();      
         if($orders)
         {
             return response()->json(['status' => 200,
-            'data' => $orders,
-            
+            'data' => $orders,        
         ]);
     
         } else{
@@ -115,6 +114,5 @@ class OrderController extends Controller
         ]);
         }
     }
-
   
 }
