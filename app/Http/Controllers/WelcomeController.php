@@ -17,7 +17,7 @@ class WelcomeController extends Controller
         $inventories = Inventory::all();
         $cart = 0;
 
-        return view('welcome', compact('items', 'category', 'cart'));
+        return view('welcome', compact('items', 'category', 'cart', 'inventories'));
     }
     public function customer(Request $request, $id)
     {

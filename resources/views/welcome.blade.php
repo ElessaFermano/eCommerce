@@ -69,8 +69,8 @@
             <div class="card">
                 <img src="https://inventorymanagement.online/storage/' . $inventory->image">
             </div>
-            <h5>{{$inventory->unit}}</h5>
-            <p>Php {{$inventory->price}}</p>
+            <h5> {{$inventory->unit}}</h5>
+            <p>Php  {{$inventory->price}}</p>
             @endforeach
         </div>
     </section>
