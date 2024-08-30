@@ -38,7 +38,6 @@
 
     <div class="main" id="home">
         <div class="">
-            <img src="{{ asset('image/coverphoto.jpg') }}" alt="" class="coverphoto">
         </div>
     </div>
     <div class="space"></div>
