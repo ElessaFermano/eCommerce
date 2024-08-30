@@ -25,8 +25,6 @@
                    <td>{{ $review->product->name }}</td>
                    <td>{{ $review->comment }}</td>
                    <td>
-                       <a href="{{ route('reviews.edit', $review->id) }}" class="editButton">Edit</a>
-
                        <form id="delete-form-{{ $review->id }}" action="{{ route('reviews.destroy', $review->id) }}" method="POST" style="display:inline;">
                            @csrf
                            @method('DELETE')

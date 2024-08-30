@@ -66,12 +66,6 @@ class OrderController extends Controller
     Cart::where('user_id', $request->user_id)->delete();
 
     Mail::to($user->email)->send(new OrderConfirmationMail($order));
-     
-    Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
-        'apikey' => env('SMS_API_KEY'),
-        'number' => '09973208548',
-        'message' => 'Thank you for shopping with us! Your order ID is: ' . $order->order_id,
-    ]);
 
         return redirect()->to('/customer/' . $request->user_id)->with('success', 'Your order is in process.');
     }
@@ -90,11 +84,21 @@ class OrderController extends Controller
          return redirect()->route('orders.index');
     }
 
+
+
     public function updateStatus(Request $request, $id)
     {
         $order = Order::findOrFail($id);
         $order->status =  $request->input('status', $order->status);
         $order->save();
+
+        if ($order->status == 'Delivered') {
+            Http::asForm()->post('https://api.semaphore.co/api/v4/messages', [
+                'apikey' => env('SMS_API_KEY'),
+                'number' => $order->user->phone, 
+                'message' => 'Thank you for shopping with us! Your order ID is: ' . $order->order_id,
+            ]);
+        }
 
         return redirect()->route('orders.index')->with('success', 'Order status updated successfully');
     }
