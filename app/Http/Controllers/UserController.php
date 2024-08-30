@@ -9,9 +9,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::simplePaginate(5); 
+        $users = User::where('role', '!=', 'admin')->simplePaginate(5);
         return view('user.index', compact('users'));
     }
+
     public function create()
     {
         return view('user.create');
