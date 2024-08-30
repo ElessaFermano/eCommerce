@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\Mail;
 class OrderController extends Controller
 {
     public function index()
-{
-    $orders = Order::with('user', 'shippingAddress')
-        ->selectRaw('user_id, shipping_address_id, payment_method, SUM(total) as total_amount, COUNT(*) as product_count, MIN(created_at) as first_order_date')
-        ->groupBy('user_id', 'shipping_address_id', 'payment_method')
-        ->paginate(5);
+    {
+        $orders = Order::with('user', 'shippingAddress')
+            ->selectRaw('user_id, shipping_address_id, payment_method, SUM(total) as total_amount, COUNT(*) as product_count, MIN(created_at) as first_order_date')
+            ->groupBy('user_id', 'shipping_address_id', 'payment_method')
+            ->paginate(5);
 
-    return view('order.index', compact('orders'));
-}
+        return view('order.index', compact('orders'));
+    }
     public function store(Request $request)
     {
         $productID = json_decode($request->product_id);
