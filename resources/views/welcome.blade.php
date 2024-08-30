@@ -16,7 +16,6 @@
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#">Categories</a></li>
             <li><a href="/login">Login</a></li>
         </ul>
         <div class="icon">
@@ -37,7 +36,6 @@
         </div>
     </div>
 
-    <div class="main" id="home">
     <div class="main" id="home">
         <div class="">
             <img src="{{ asset('image/coverphoto.jpg') }}" alt="" class="coverphoto">
@@ -67,38 +65,14 @@
         </div>
     </section>
 
-    <!-- About Us Section -->
     <section class="about" id="about">
         <div class="about-section">
-            <h1>About Us</h1>
+            <h1>ABOUT US</h1>
             <div class="content">
                 <p>
-                    Welcome to our company! We are dedicated to providing the best services to our clients.
-                    Our mission is to deliver quality and excellence in everything we do. With years of experience
-                    in the industry, we are confident in our ability to meet your needs and exceed your expectations.
+                Welcome to TheeShop, your one-stop destination for fashion and technology! At TheeShop, we believe in the perfect blend of style and innovation, offering you the latest trends in clothing alongside cutting-edge gadgets. <br> <br>Our mission is to provide high-quality products that cater to both your fashion sense and tech-savvy needs. Whether you’re shopping for chic outfits or the newest devices, we strive to deliver a seamless and enjoyable shopping experience. Join us on this exciting journey as we continue to expand our collection and bring you the best in fashion and technology.
                 </p>
-                <p>
-                    Our team is made up of passionate and skilled professionals who are committed to helping you achieve your goals.
-                    We believe in the power of collaboration and innovation, and we work tirelessly to bring you the latest solutions.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Us Section -->
-    <section class="about" id="about">
-        <div class="about-section">
-            <h1>About Us</h1>
-            <div class="content">
-                <p>
-                    Welcome to our company! We are dedicated to providing the best services to our clients.
-                    Our mission is to deliver quality and excellence in everything we do. With years of experience
-                    in the industry, we are confident in our ability to meet your needs and exceed your expectations.
-                </p>
-                <p>
-                    Our team is made up of passionate and skilled professionals who are committed to helping you achieve your goals.
-                    We believe in the power of collaboration and innovation, and we work tirelessly to bring you the latest solutions.
-                </p>
+             
             </div>
         </div>
     </section>

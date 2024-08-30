@@ -16,6 +16,11 @@ html {
     left: 0;
     background: #fff; 
     z-index: 1000; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0px 2px 20px rgb(95, 95, 95);
 }
 
 .main {
@@ -26,19 +31,8 @@ html {
     padding-top: 60px;
 }
 
-/* .header {
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1); 
-    position: relative;
-    z-index: 10; 
-} */
-
 .header h2{
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 .header ul {
@@ -60,7 +54,7 @@ html {
 }
 
 .header li a:hover {
-    color: rgb(3, 122, 100);
+    color: rgb(32, 160, 207);
 }
 
 .dropdown {
@@ -126,8 +120,9 @@ html {
 
 .icon {
     display: flex;
-    gap: 40px; 
+    gap: 20px; 
     align-items: center;
+    margin-right: 35px;
 }
 
 .cart, .user {
@@ -291,10 +286,6 @@ html {
     text-decoration: underline;
 }
 
-
-/* .main {
-    position: relative;
-} */
 
 .cover-container {
     position: relative;
@@ -488,10 +479,7 @@ html {
 }
 
 @media (max-width: 768px) {
-    /* .row {
-        flex-direction: column;
-        align-items: center;
-    } */
+   
 
     .card, .category-item {
         width: 100%; 
