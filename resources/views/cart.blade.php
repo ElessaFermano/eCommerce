@@ -16,7 +16,6 @@
         <ul>
             <li><a id="home">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
             <li><a href="/login">Login</a></li>
         </ul>
         <div class="icon">

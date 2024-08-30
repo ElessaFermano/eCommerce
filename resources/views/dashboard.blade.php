@@ -27,12 +27,8 @@
     </script>
 </head>
 <body>
-    <div class="container-scroller">
-        
+    <div class="container-scroller">     
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <div class="logo">
-                <h4>theeSHOP</h4>
-            </div>
             <ul class="nav">
                 <li class="nav-item profile">
                     <div class="profile-desc">
