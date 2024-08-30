@@ -15,7 +15,6 @@
                         <th>Number of Products</th>
                         <th>Total Amount</th>
                         <th>Date</th>
-                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -32,17 +31,7 @@
                             <td>{{ $order->product_count }}</td>
                             <td>{{ $order->total_amount }}</td>
                             <td>{{ \Carbon\Carbon::parse($order->first_order_date)->format('F d, Y h:i A') }}</td> 
-                            <td>
-                                <form action="{{ route('orders.updateStatus', $order->user_id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <select name="status" onchange="this.form.submit()">
-                                        <option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="Processing" {{ $order->status == 'Processing' ? 'selected' : '' }}>Processing</option>
-                                        <option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
-                                    </select>
-                                </form>
-                            </td>
+                            
                             <td>
                                 <form id="delete-form-{{ $order->user_id }}" action="{{ route('orders.destroy', $order->user_id) }}" method="POST" style="display: inline;">
                                     @csrf

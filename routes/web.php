@@ -48,7 +48,7 @@ Route::get('/cart/count', [CartController::class, 'cartCount']);
 
 Route::get('/shipping-fee', [ShippingController::class, 'getShippingFee'])->name('shipping.fee');
 Route::post('/shipping-address', [ShippingAddressController::class, 'store'])->name('shipping-address.store');
-Route::put('/orders/{id}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
 
 Route::get('/products/{product}/reviews', [ProductController::class, 'showReviews']);
 Route::post('/products/{product}/reviews', [ProductController::class, 'addReview']);

@@ -16,15 +16,4 @@ class DashboardController extends Controller
     return view('dashboard');
     
    }
-   public function total()
-   {
-      $totalUsers = User::count();
-      $totalOrders = Order::count();
-      $totalReviews = Review::count();
-      $totalProducts = Product::count();
-      $totalCategories = Category::count();
-  
-      return view('dashboard', compact('totalUsers', 'totalOrders', 'totalReviews', 'totalProducts', 'totalCategories'));
-      
-   }
 }
