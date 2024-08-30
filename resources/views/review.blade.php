@@ -33,12 +33,11 @@
         <div class="review">
             <h5>REVIEWS FROM OUR VALUED CUSTOMERS</h5>
     @foreach($reviews as $review)
-    
     <h6> {{$review->user->first_name . " " . $review->user->last_name}}</h6>
         <p>{{ $review->comment }}</p>
         <hr>
     @endforeach
-</div>
+    </div>
 
         <h5><i>  Leave a Comment</i></h5>
         <form action="{{route('reviews.store')}}" method="post">
