@@ -63,6 +63,17 @@
             @endforeach
         </div>
     </section>
+    <section>
+        <div>
+            @foreach ($inventories as $inventory)
+            <div class="card">
+                <img src="https://inventorymanagement.online/storage/' . $inventory->image">
+            </div>
+            <h5>{{$inventory->unit}}</h5>
+            <p>Php {{$inventory->price}}</p>
+            @endforeach
+        </div>
+    </section>
 
     <section class="about" id="about">
         <div class="about-section">

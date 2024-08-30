@@ -9,7 +9,7 @@ class InventoryController extends Controller
 {
     public function index()
     {
-        $inventories = Inventory::all();
+        $inventories = Inventory::all();       
         return view('inventory', compact('inventories'));
     }
 }
