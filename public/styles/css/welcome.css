@@ -33,6 +33,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .product, .about {
